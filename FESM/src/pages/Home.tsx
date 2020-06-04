@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>FESM</IonTitle>
+          <IonTitle>MENU FESM</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
