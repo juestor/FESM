@@ -25,9 +25,11 @@ const NewParticipant: React.FC<ContainerProps> = () => {
   }
 
   return (
-    <div className="container">
-      <label>Nuevo Participante</label>
+    <div className="container">    
       <IonList>
+        <IonItem class="title-item">
+          <IonLabel class="title-label" color="primary">Nuevo Participante</IonLabel><br />
+        </IonItem>
         <IonItem>
           <IonLabel position="floating">Nombre</IonLabel>
           <IonInput value={name} onIonChange={e => setName(e.detail.value!)}></IonInput>
@@ -69,7 +71,7 @@ const NewParticipant: React.FC<ContainerProps> = () => {
         </IonItem>
 
         <IonItem>
-          <IonButton expand="block" onClick={createParticipant}>Crear</IonButton>
+          <IonButton class="create-button" expand="full" onClick={createParticipant}>Crear</IonButton>
         </IonItem>
       </IonList>
     </div>
