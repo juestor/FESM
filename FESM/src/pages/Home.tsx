@@ -1,18 +1,35 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
-import NewParticipant from '../components/NewParticipant/NewParticipant';
-import './Home.css';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonMenuButton } from '@ionic/react';
 
-const Home: React.FC = () => {
+import './Home.css';
+import Information from '../components/Information/Information';
+import NewParticipant from '../components/NewParticipant/NewParticipant';
+import MyParticipants from '../components/MyParticipants/MyParticipants';
+import ImportantAdvice from '../components/ImportantAdvicement/ImportantAdvice';
+
+
+const Home = (props: { mode: string; }) => {
+  const { mode } = props;
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton></IonMenuButton>
+          </IonButtons>
           <IonTitle>FESM</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <NewParticipant />
+        {mode === 'Information' ? (
+          <Information />
+        ) : mode === 'NewParticipant' ? (
+          <NewParticipant />
+        ) : (
+          <MyParticipants />
+        )}
+        
       </IonContent>
     </IonPage>
   );

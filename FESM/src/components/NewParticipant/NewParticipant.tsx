@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './NewParticipant.css';
 import { IonList, IonItem, IonInput, IonLabel, IonDatetime, IonSegment, IonSegmentButton, IonButton } from '@ionic/react';
+
+import './NewParticipant.css';
 
 interface ContainerProps { }
 
