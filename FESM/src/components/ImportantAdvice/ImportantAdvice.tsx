@@ -1,5 +1,5 @@
 import React from 'react';
-import './NewParticipant.css';
+import './ImportantAdvice.css';
 import { IonList, IonItem, IonLabel } from '@ionic/react';
 
 interface ContainerProps { }

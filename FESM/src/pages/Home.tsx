@@ -5,7 +5,7 @@ import './Home.css';
 import Information from '../components/Information/Information';
 import NewParticipant from '../components/NewParticipant/NewParticipant';
 import MyParticipants from '../components/MyParticipants/MyParticipants';
-import ImportantAdvice from '../components/ImportantAdvicement/ImportantAdvice';
+import ImportantAdvice from '../components/ImportantAdvice/ImportantAdvice';
 
 
 const Home = (props: { mode: string; }) => {
@@ -26,10 +26,9 @@ const Home = (props: { mode: string; }) => {
           <Information />
         ) : mode === 'NewParticipant' ? (
           <NewParticipant />
-        ) : (
+        ) : mode === 'MyParticipants' ? (
           <MyParticipants />
-        )}
-        
+        ) : <ImportantAdvice />}
       </IonContent>
     </IonPage>
   );
