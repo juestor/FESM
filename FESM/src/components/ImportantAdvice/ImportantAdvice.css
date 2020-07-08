@@ -1,0 +1,11 @@
+.card-content-md {
+  font-size: 20px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 25px;
+}
