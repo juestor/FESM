@@ -12,8 +12,8 @@ class NewParticipant extends Component <{},any> {
       name: '',
       lastName: '',
       birthDate: '',
-      weight: 0,
-      height: 0,
+      weight: null,
+      height: null,
       gender: ''
     }
   }
