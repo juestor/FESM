@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonMenuButton } from '@ionic/react';
 
 import './Home.css';
@@ -8,8 +8,10 @@ import MyParticipants from '../components/MyParticipants/MyParticipants';
 import ImportantAdvice from '../components/ImportantAdvice/ImportantAdvice';
 
 
-const Home = (props: { mode: string; }) => {
+const Home = (props: { mode: string;}) => {
   const { mode } = props;
+
+  const [current, setCurrent] = useState(null); 
 
   return (
     <IonPage>
@@ -25,9 +27,9 @@ const Home = (props: { mode: string; }) => {
         {mode === 'Information' ? (
           <Information />
         ) : mode === 'NewParticipant' ? (
-          <NewParticipant />
+          <NewParticipant initialValue={current} clear={() => setCurrent(null)}/>
         ) : mode === 'MyParticipants' ? (
-          <MyParticipants />
+          <MyParticipants doEdit={setCurrent} />
         ) : <ImportantAdvice />}
       </IonContent>
     </IonPage>

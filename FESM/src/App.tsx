@@ -25,16 +25,33 @@ import './theme/variables.css';
 import MainMenu from './components/MainMenu/MainMenu';
 import Home from './pages/Home';
 
+/* Firebase imports */
+import firebase from 'firebase/app';
+
+//TODO: put in a separate file and exclude from git
+const firebaseConfig = {
+  apiKey: 'AIzaSyChw_Agub3eXHpHMx4yZ1Cl2tp78QETsjA',
+  authDomain: 'fesm-e0720.firebaseapp.com',
+  databaseURL: 'https://fesm-e0720.firebaseio.com',
+  projectId: 'fesm-e0720',
+  storageBucket: 'fesm-e0720.appspot.com',
+  messagingSenderId: '36390058602',
+  appId: '1:36390058602:web:440edfdd1927f63a48a813',
+  measurementId: 'G-G997W60ZH1'
+};
+
+firebase.initializeApp(firebaseConfig);
+
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <MainMenu/>
-      <IonRouterOutlet id="main-content">
-        <Route path="/FESM" component={Home} exact={true} />
-        <Route path="/FESM/NewParticipant" component={() => <Home mode='NewParticipant'/>} exact={true} />
-        <Route path="/FESM/MyParticipants" component={() => <Home mode='MyParticipants'/>} exact={true} />
-        <Route path="/FESM/Information" component={() => <Home mode='Information'/>} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/FESM" />} />
+      <IonRouterOutlet id='main-content'>
+        <Route path='/FESM' component={Home} exact={true} />
+        <Route path='/FESM/NewParticipant' component={() => <Home mode='NewParticipant'/>} exact={true} />
+        <Route path='/FESM/MyParticipants' component={() => <Home mode='MyParticipants'/>} exact={true} />
+        <Route path='/FESM/Information' component={() => <Home mode='Information'/>} exact={true} />
+        <Route exact path='/' render={() => <Redirect to='/FESM' />} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
