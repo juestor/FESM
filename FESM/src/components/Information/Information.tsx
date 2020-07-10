@@ -8,9 +8,23 @@ interface ContainerProps { }
 const Information: React.FC<ContainerProps> = () => {
   
   return (
-    <div>
-      Information Selection!!!!!!!
-    </div>
+    <>
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonMenuButton></IonMenuButton>
+            </IonButtons>
+            <IonTitle>FESM</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <div>
+            Information Selection!!!!!!!
+          </div>
+        </IonContent>
+      </IonPage>
+    </>
   );
 };
 

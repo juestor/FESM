@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { IonItem, IonLabel, IonText, IonItemSliding, IonItemOption, IonItemOptions, IonIcon } from '@ionic/react';
 import { document, trash } from 'ionicons/icons';
 
@@ -22,7 +22,7 @@ export default function MyParticipant({doEdit, doDelete, doc}: any){
         </IonLabel>
         <div></div>
       </IonItem>
-      <IonItemOptions >
+      <IonItemOptions>
         <IonItemOption onClick={() => doEdit(doc.id)}>
           <IonIcon slot="icon-only" icon={document}>
           </IonIcon>

@@ -23,7 +23,10 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 import MainMenu from './components/MainMenu/MainMenu';
-import Home from './pages/Home';
+import Information from './components/Information/Information';
+import ImportantAdvice from './components/ImportantAdvice/ImportantAdvice';
+import NewParticipant from './components/NewParticipant/NewParticipant';
+import MyParticipants from './components/MyParticipants/MyParticipants';
 
 /* Firebase imports */
 import firebase from 'firebase/app';
@@ -47,10 +50,10 @@ const App: React.FC = () => (
     <IonReactRouter>
       <MainMenu/>
       <IonRouterOutlet id='main-content'>
-        <Route path='/FESM' component={Home} exact={true} />
-        <Route path='/FESM/NewParticipant' component={() => <Home mode='NewParticipant'/>} exact={true} />
-        <Route path='/FESM/MyParticipants' component={() => <Home mode='MyParticipants'/>} exact={true} />
-        <Route path='/FESM/Information' component={() => <Home mode='Information'/>} exact={true} />
+        <Route path='/FESM' component={() => <ImportantAdvice />} exact={true} />
+        <Route path='/FESM/NewParticipant' component={() => <NewParticipant />} exact={true} />
+        <Route path='/FESM/MyParticipants' component={() => <MyParticipants />} exact={true} />
+        <Route path='/FESM/Information' component={() => <Information />} exact={true} />
         <Route exact path='/' render={() => <Redirect to='/FESM' />} />
       </IonRouterOutlet>
     </IonReactRouter>
