@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory, useLocation  } from "react-router-dom";
 import {
   IonContent,
   IonHeader,
@@ -10,7 +11,6 @@ import {
   IonCard,
   IonCardHeader,
   IonCardTitle,
-  IonCardContent,
   IonList,
   IonItem,
   IonIcon,
@@ -20,6 +20,18 @@ import { heartSharp, barbellSharp, bicycleSharp, roseSharp, fastFoodSharp} from 
 import './TestMenu.css';
 
 export default function TestMenu(){
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  let query = useQuery();
+  let history = useHistory();
+  let participantId = query.get("id");
+  let participantName = query.get("name");
+
+  if(!participantId)
+    history.push('/FESM');
+
   return (
     <>
       <IonPage>
@@ -33,7 +45,7 @@ export default function TestMenu(){
         </IonHeader>
         <IonContent>
           <div className="title">
-            Evaluaciones
+            Evaluacion - {participantName}
           </div>
           <IonList>
             <IonItem>

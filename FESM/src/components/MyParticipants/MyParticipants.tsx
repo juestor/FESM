@@ -20,7 +20,7 @@ export default function MyParticipants(){
   let history = useHistory();
 
   const [value, loading, error] = useCollection(
-    firebase.firestore().collection("Participants").orderBy("name", "desc"),
+    firebase.firestore().collection("Participants").orderBy("lastModifiedOn", "desc"),
     {
       snapshotListenOptions:{includeMetadataChanges: true}
     }
@@ -34,8 +34,14 @@ export default function MyParticipants(){
     list.closeSlidingItems();
   };
 
+  const doEvaluation = (id: string) => {
+    const name = value?.docs.find((doc) => doc.id === id)?.data().name;
+    console.log('name', name);
+    history.push(`/FESM/TestMenu?id=${id}&name=${name}`);
+  };
+
   const doEdit = (id: string) => {
-    history.push('/FESM/NewParticipant?id=' + id);
+    history.push(`/FESM/NewParticipant?id=${id}`);
   };
 
   const doDelete = (id: string) => {
@@ -61,6 +67,10 @@ export default function MyParticipants(){
                 !loading && (
                   <MyParticipant
                     doc = {doc}
+                    doEvaluation = {(i: any) => {
+                      closeSlidingParticipants();
+                      doEvaluation(i);
+                    }}
                     doEdit = {(i: any) => {
                       closeSlidingParticipants();
                       doEdit(i);
