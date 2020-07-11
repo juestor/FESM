@@ -1,16 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory  } from "react-router-dom";
 import firebase from 'firebase';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import {
   IonList,
-  IonItem,
-  IonLabel,
-  IonText,
-  IonItemSliding,
-  IonItemOption,
-  IonItemOptions,
-  IonIcon,
   IonContent,
   IonHeader,
   IonPage,
@@ -35,6 +28,9 @@ export default function MyParticipants(){
 
   const closeSlidingParticipants = () => {
     let list: any = document.getElementById('participantList');
+    if(!list){
+      return;
+    }
     list.closeSlidingItems();
   };
 

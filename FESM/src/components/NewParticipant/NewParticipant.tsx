@@ -31,8 +31,6 @@ function NewParticipant () {
   let query = useQuery();
   let initialValue = query.get("id");
 
-  console.log('VQUERY STRING VALUE', initialValue);
-
   const [name, setName] = useState<string>();
   const [lastName, setLastName] = useState<string>();
   const [birthDate, setBirthDate] = useState<string>();

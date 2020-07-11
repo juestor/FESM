@@ -7,8 +7,7 @@ import './MainMenu.css';
 interface ContainerProps { }
 
 const MainMenu: React.FC<ContainerProps> = () => {
-  const navigate = (navigateTo: string) => {
-    console.log('NAVIGATE TO', navigateTo);
+  const closeMenu = () => {
     menuController.toggle();
   };
 
@@ -21,22 +20,29 @@ const MainMenu: React.FC<ContainerProps> = () => {
       </IonHeader>
       <IonContent>
         <IonList>
+        <IonItem
+            onClick={() => closeMenu()}
+            routerLink="/FESM"
+          >
+            <IonIcon name="person-add-outline"></IonIcon>
+            <IonLabel>Inicio</IonLabel>
+          </IonItem>
           <IonItem
-            onClick={() => navigate('newParticipant')}
+            onClick={() => closeMenu()}
             routerLink="/FESM/NewParticipant"
           >
             <IonIcon name="person-add-outline"></IonIcon>
             <IonLabel>Nuevo Participante</IonLabel>
           </IonItem>
           <IonItem
-            onClick={() => navigate('myParticipants')}
+            onClick={() => closeMenu()}
             routerLink="/FESM/MyParticipants"
           >
             <IonIcon name="people-outline"></IonIcon>
             <IonLabel>Mis Participantes</IonLabel>
           </IonItem>
           <IonItem
-            onClick={() => navigate('information')}
+            onClick={() => closeMenu()}
             routerLink="/FESM/Information"
           >
             <IonIcon name="alert-outline"></IonIcon>

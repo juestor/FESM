@@ -27,6 +27,7 @@ import Information from './components/Information/Information';
 import ImportantAdvice from './components/ImportantAdvice/ImportantAdvice';
 import NewParticipant from './components/NewParticipant/NewParticipant';
 import MyParticipants from './components/MyParticipants/MyParticipants';
+import TestMenu from './components/TestMenu/TestMenu';
 
 /* Firebase imports */
 import firebase from 'firebase/app';
@@ -54,6 +55,7 @@ const App: React.FC = () => (
         <Route path='/FESM/NewParticipant' component={() => <NewParticipant />} exact={true} />
         <Route path='/FESM/MyParticipants' component={() => <MyParticipants />} exact={true} />
         <Route path='/FESM/Information' component={() => <Information />} exact={true} />
+        <Route path='/FESM/TestMenu' component={() => <TestMenu />} exact={true} />
         <Route exact path='/' render={() => <Redirect to='/FESM' />} />
       </IonRouterOutlet>
     </IonReactRouter>
