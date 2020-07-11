@@ -21,6 +21,7 @@ import {
 } from '@ionic/react';
 
 import MyParticipant from '../MyParticipant/MyParticipant';
+import './MyParticipants.css';
 
 export default function MyParticipants(){
   let history = useHistory();
@@ -33,8 +34,8 @@ export default function MyParticipants(){
   );
 
   const closeSlidingParticipants = () => {
-    /* let list = document.getElementById('participantList');
-    list.closeSlidingParticipants(); */
+    let list: any = document.getElementById('participantList');
+    list.closeSlidingItems();
   };
 
   const doEdit = (id: string) => {
@@ -57,7 +58,7 @@ export default function MyParticipants(){
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <h3>My Participants</h3>
+          <div className="title">Mis Participantes</div>
           <IonList id="participantList">
             {value && value.docs.map(doc => {
               return (

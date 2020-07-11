@@ -13,11 +13,10 @@ export default function MyParticipant({doEdit, doDelete, doc}: any){
             <div>{data.name}</div>
           </IonText>
           <IonText class= "item-sub-title">
-            TBD
-            {/* <div>{new Date(data.createnOn)}</div> */}
+            <div>{data.lastName}</div>
           </IonText>
           <IonText class= "item-id">
-            {doc.id} // check if is data?
+            <div>{new Date(data.lastModifiedOn) + ''}</div>
           </IonText>
         </IonLabel>
         <div></div>

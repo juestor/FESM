@@ -19,6 +19,8 @@ import {
   IonButtons,
   IonMenuButton } from '@ionic/react';
 
+import './NewParticipant.css';
+
 
 function NewParticipant () {
   const useQuery = () => {
@@ -50,12 +52,15 @@ function NewParticipant () {
       initialValue &&
       value?.exists) 
     {
-      setName(value.data()?.name);
-      setLastName(value.data()?.lastName);
-      setBirthDate(value.data()?.birthDate);
-      setWeight(value.data()?.weight);
-      setHeight(value.data()?.height);
-      setGender(value.data()?.gender);
+      const data = value.data();
+      if(!data)
+        return;
+      setName(data.name);
+      setLastName(data.lastName);
+      setBirthDate(data.birthDate);
+      setWeight(data.weight);
+      setHeight(data.height);
+      setGender(data.gender);
     }
   },
   [loading, initialValue, value]);
@@ -74,7 +79,8 @@ function NewParticipant () {
           birthDate,
           weight,
           height,
-          gender
+          gender,
+          lastModifiedOn: new Date().getTime()
         },
         {merge: true}
       );
@@ -93,7 +99,8 @@ function NewParticipant () {
         birthDate,
         weight,
         height,
-        gender
+        gender,
+        lastModifiedOn: new Date().getTime()
       });
 
       setName('');
@@ -119,10 +126,8 @@ function NewParticipant () {
           </IonToolbar>
         </IonHeader>
         <IonContent>
+          <div className="title-label">{initialValue ? 'Editar Participante' : 'Nuevo Participante'}</div>
           <IonList>
-            <IonItem class="title-item">
-              <IonLabel class="title-label" color="primary">Nuevo Participante</IonLabel><br />
-            </IonItem>
             <IonItem>
               <IonLabel position="floating">Nombre</IonLabel>
               <IonInput value={name} onIonChange={e => setName(e.detail.value!)}></IonInput>
@@ -164,7 +169,7 @@ function NewParticipant () {
             </IonItem>
 
             <IonItem>
-              <IonButton class="create-button" expand="full" onClick={onSave}>Crear</IonButton>
+              <IonButton class="create-button" expand="full" onClick={onSave}>Guardar</IonButton>
             </IonItem>
           </IonList>
         </IonContent>

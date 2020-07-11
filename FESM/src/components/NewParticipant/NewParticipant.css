@@ -9,11 +9,11 @@
 }
 
 .title-label {
-  display: flex !important;
+  font-size: 40px;
   align-items: center;
+  display: flex;
   justify-content: center;
-  margin: 10px;
-  font-size: 24px !important;
+  margin: 20px;
 }
 
 .create-button {
