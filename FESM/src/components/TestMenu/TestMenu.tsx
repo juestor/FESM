@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, useLocation  } from "react-router-dom";
 import {
   IonContent,
@@ -27,10 +27,20 @@ export default function TestMenu(){
   let query = useQuery();
   let history = useHistory();
   let participantId = query.get("id");
-  let participantName = query.get("name");
+  let participantName = query.get("name") ? ' - ' + query.get("name") : '';
 
-  if(!participantId)
-    history.push('/FESM');
+
+  useEffect(() => {
+    if (history) 
+    {
+      if(history.location.pathname === '/FESM/TestMenu' &&
+        (!participantId ||
+        participantName === '')) {
+        history.push('/FESM');
+      }
+    }
+  },
+  [history, participantId, participantName]);
 
   return (
     <>
@@ -45,7 +55,7 @@ export default function TestMenu(){
         </IonHeader>
         <IonContent>
           <div className="title">
-            Evaluacion - {participantName}
+            Evaluacion{participantName}
           </div>
           <IonList>
             <IonItem>

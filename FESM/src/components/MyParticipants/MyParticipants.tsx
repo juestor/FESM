@@ -36,7 +36,6 @@ export default function MyParticipants(){
 
   const doEvaluation = (id: string) => {
     const name = value?.docs.find((doc) => doc.id === id)?.data().name;
-    console.log('name', name);
     history.push(`/FESM/TestMenu?id=${id}&name=${name}`);
   };
 

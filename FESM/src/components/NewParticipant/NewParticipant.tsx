@@ -26,7 +26,7 @@ function NewParticipant () {
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   }
-    
+
   let history = useHistory();
   let query = useQuery();
   let initialValue = query.get("id");
@@ -59,6 +59,13 @@ function NewParticipant () {
       setWeight(data.weight);
       setHeight(data.height);
       setGender(data.gender);
+    } else {
+      setName('');
+      setLastName('');
+      setBirthDate('');
+      setWeight(undefined);
+      setHeight(undefined);
+      setGender('');
     }
   },
   [loading, initialValue, value]);
