@@ -18,7 +18,9 @@ import {
   IonButton,
   IonLabel,
   IonInput,
-  IonBadge
+  IonBadge,
+  IonFab,
+  IonFabButton
 } from '@ionic/react';
 import {
   heartSharp,
@@ -30,7 +32,9 @@ import {
   walkOutline,
   calculatorOutline,
   trendingUpOutline,
-  trendingDownOutline
+  trendingDownOutline,
+  eyedropOutline,
+  saveOutline
 } from 'ionicons/icons';
 
 import './TestMenu.css';
@@ -46,16 +50,22 @@ export enum cardioOptions {
 export enum strengthOptions {
   lower = 'lower',
   upper = 'upper'
-}
+};
 
 export enum resistanceOptions {
   abs = 'abs',
   pushUps = 'pushUps'
-}
+};
+
+export enum nutritionalOptions {
+  direct = 'direct',
+  folds = 'folds'
+};
 
 export default function TestMenu(){
   const [gender, setGender] = useState<string>('');
   const [weight, setWeight] = useState<number>(0);
+  const [age, setAge] = useState<number>(0);
 
   const [showCardioModal, setShowCardioModal] = useState<boolean>(false);
   const [cardioOption, setCardioOption] = useState<string>(cardioOptions.calculated);
@@ -79,7 +89,16 @@ export default function TestMenu(){
   const [showFlexibilityModal, setShowFlexibilityModal] = useState<boolean>(false);
   const [flexibility, setFlexibility] = useState<number>(0);
   
-  const [showNutricionModal, setShowNutricionModal] = useState<boolean>(false);
+  const [showNutritionalModal, setShowNutritionalModal] = useState<boolean>(false);
+  const [nutritionalOption, setNutritionalOption] = useState<string>(nutritionalOptions.direct);
+  const [nutritionalValue, setNutritionalValue] = useState<number>(0);
+  const [tricepsFold, setTricepsFold] = useState<number>(0);
+  const [subscapularFold, setSubscapularFold] = useState<number>(0);
+  const [pectoralFold, setPectoralFold] = useState<number>(0);
+  const [axillaryFold, setAxillaryFold] = useState<number>(0);
+  const [supraIliacFold, setSupraIliacFold] = useState<number>(0);
+  const [abdominalFold, setAbdominalFold] = useState<number>(0);
+  const [anteriorThighFold, setAnteriorThighFold] = useState<number>(0);
 
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -109,9 +128,51 @@ export default function TestMenu(){
 
       setGender(data?.gender);
       setWeight(data?.weight);
+      setAge(calculate_age(data?.birthDate));
     }
   },
   [history, participantId, participantName, value]);
+
+  const calculate_age = (dob1: string): number => {
+    var today = new Date();
+    var birthDate = new Date(dob1);  // create a date object directly from `dob1` argument
+    var age_now = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age_now--;
+    }
+    console.log(age_now);
+    return age_now;
+  }
+
+  const save = async() => {
+    console.log('***************** SAVEEEEEE');
+    let collectionRef = firebase.firestore().collection('Evaluations');
+    await collectionRef.add(
+      {
+        participantId,
+        cardio,
+        strengthUpper,
+        strengthLower,
+        resistanceABS,
+        resistancePushUps,
+        flexibility,
+        nutritional: nutritionalValue,
+        lastModifiedOn: new Date().getTime()
+      }
+    );
+
+    setCardio(0);
+    setStrengthUpper(0);
+    setStrengthLower(0);
+    setResistanceABS(0);
+    setResistancePushUps(0);
+    setFlexibility(0);
+    setNutritionalValue(0);
+    
+    history.push('/FESM');
+  };
 
   return (
     <>
@@ -125,6 +186,11 @@ export default function TestMenu(){
           </IonToolbar>
         </IonHeader>
         <IonContent>
+        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+          <IonFabButton onClick={() => save()}>
+            <IonIcon icon={saveOutline} />
+          </IonFabButton>
+        </IonFab>
           <div className="title">
             Evaluacion{participantName}
           </div>
@@ -167,9 +233,10 @@ export default function TestMenu(){
                 </IonCardHeader>
               </IonCard>
             </IonItem>
-            <IonItem onClick={() => setShowNutricionModal(true)}>
+            <IonItem onClick={() => setShowNutritionalModal(true)}>
               <IonCard className="card">
                 <IonIcon className="iconClass" icon={fastFoodSharp}></IonIcon>
+                <IonBadge color="primary">{nutritionalValue}</IonBadge>
                 <IonCardHeader>
                   <IonCardTitle>Estado Nutricional</IonCardTitle>
                 </IonCardHeader>
@@ -339,9 +406,78 @@ export default function TestMenu(){
                 Close Flexibilidad Modal
             </IonButton>
           </IonModal>
-          <IonModal isOpen={showNutricionModal}>
-            <p>This is the Nutricion modal content.</p>
-            <IonButton onClick={() => setShowNutricionModal(false)}>
+          <IonModal isOpen={showNutritionalModal}>
+          <div className="modalContainer">
+              <div>
+                FITNESS NUTRICIONAL
+              </div>
+
+              <div className="tabs">  
+                <IonIcon class={nutritionalOption === nutritionalOptions.direct ? 'tab-icon active' : 'tab-icon inactive'} icon={calculatorOutline} onClick={() => setNutritionalOption(nutritionalOptions.direct)}/>
+                <IonIcon class={nutritionalOption === nutritionalOptions.folds ? 'tab-icon active' : 'tab-icon inactive'} icon={eyedropOutline} onClick={() => setNutritionalOption(nutritionalOptions.folds)}/>
+              </div>
+              <div className='option-content'>
+                {nutritionalOption === nutritionalOptions.direct && 
+                  <div>
+                    <div>Calculo directo</div>
+                    <IonItem>
+                      <IonLabel position="floating">% graso</IonLabel>
+                      <IonInput value={nutritionalValue} onIonChange={e => setNutritionalValue(parseFloat(e.detail.value!))}></IonInput>
+                    </IonItem>
+                  </div>
+                }
+                {nutritionalOption === nutritionalOptions.folds && 
+                  <div>
+                    <div>Pliegues</div>
+                    <IonItem>
+                      <IonLabel position="floating">Triceps</IonLabel>
+                      <IonInput value={tricepsFold} onIonChange={e => setTricepsFold(parseFloat(e.detail.value!))}></IonInput>
+                    </IonItem>
+                    <IonItem>
+                      <IonLabel position="floating">Subescapular</IonLabel>
+                      <IonInput value={subscapularFold} onIonChange={e => setSubscapularFold(parseFloat(e.detail.value!))}></IonInput>
+                    </IonItem>
+                    <IonItem>
+                      <IonLabel position="floating">Pectoral</IonLabel>
+                      <IonInput value={pectoralFold} onIonChange={e => setPectoralFold(parseFloat(e.detail.value!))}></IonInput>
+                    </IonItem>
+                    <IonItem>
+                      <IonLabel position="floating">Medio Axilar</IonLabel>
+                      <IonInput value={axillaryFold} onIonChange={e => setAxillaryFold(parseFloat(e.detail.value!))}></IonInput>
+                    </IonItem>
+                    <IonItem>
+                      <IonLabel position="floating">Supra Iliaco</IonLabel>
+                      <IonInput value={supraIliacFold} onIonChange={e => setSupraIliacFold(parseFloat(e.detail.value!))}></IonInput>
+                    </IonItem>
+                    <IonItem>
+                      <IonLabel position="floating">Abdonimal</IonLabel>
+                      <IonInput value={abdominalFold} onIonChange={e => setAbdominalFold(parseFloat(e.detail.value!))}></IonInput>
+                    </IonItem>
+                    <IonItem>
+                      <IonLabel position="floating">Muslo Anterior</IonLabel>
+                      <IonInput value={anteriorThighFold} onIonChange={e => setAnteriorThighFold(parseFloat(e.detail.value!))}></IonInput>
+                    </IonItem>
+                  </div>
+                }
+              </div>
+            </div>
+            <IonButton onClick={() => {
+              if(nutritionalOption === nutritionalOptions.folds){
+                if(tricepsFold && subscapularFold && pectoralFold && axillaryFold && supraIliacFold && abdominalFold && anteriorThighFold) {
+                  const sumatoria = tricepsFold + subscapularFold + pectoralFold + axillaryFold + supraIliacFold + abdominalFold + anteriorThighFold;
+                  let density;
+
+                  if(gender === 'female') {
+                    density = (1.097 - (0.00046971 * sumatoria) + (0.00000056 * sumatoria^2) - (0.00012828 * age));
+                  } else {
+                    density = (1.112 - (0.00043499 * sumatoria) + (0.00000055 * sumatoria^2) - (0.00028826 * age));
+                  }
+
+                  setNutritionalValue(((405/density) - 450));
+                }
+              }
+              setShowNutritionalModal(false);
+            }}>
                 Close Nutricion Modal
             </IonButton>
           </IonModal>

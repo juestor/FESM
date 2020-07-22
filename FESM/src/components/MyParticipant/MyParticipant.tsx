@@ -1,8 +1,8 @@
 import React from 'react';
 import { IonItem, IonLabel, IonText, IonItemSliding, IonItemOption, IonItemOptions, IonIcon } from '@ionic/react';
-import { document, trash, analytics } from 'ionicons/icons';
+import { document, trash, analytics, barChart } from 'ionicons/icons';
 
-export default function MyParticipant({doEvaluation, doEdit, doDelete, doc}: any){
+export default function MyParticipant({results, doEvaluation, doEdit, doDelete, doc}: any){
   let data = doc.data();
 
   return(
@@ -22,6 +22,10 @@ export default function MyParticipant({doEvaluation, doEdit, doDelete, doc}: any
         <div></div>
       </IonItem>
       <IonItemOptions>
+        <IonItemOption color="primary" onClick= {() => results(doc.id)}>
+          <IonIcon slot="icon-only" icon={barChart}>
+          </IonIcon>
+        </IonItemOption>
         <IonItemOption color="primary" onClick= {() => doEvaluation(doc.id)}>
           <IonIcon slot="icon-only" icon={analytics}>
           </IonIcon>

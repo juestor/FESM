@@ -34,6 +34,11 @@ export default function MyParticipants(){
     list.closeSlidingItems();
   };
 
+  const results = (id: string) => {
+    const name = value?.docs.find((doc) => doc.id === id)?.data().name;
+    history.push(`/FESM/Results?id=${id}&name=${name}`);
+  };
+
   const doEvaluation = (id: string) => {
     const name = value?.docs.find((doc) => doc.id === id)?.data().name;
     history.push(`/FESM/TestMenu?id=${id}&name=${name}`);
@@ -66,6 +71,10 @@ export default function MyParticipants(){
                 !loading && (
                   <MyParticipant
                     doc = {doc}
+                    results = {(i: any) => {
+                      closeSlidingParticipants();
+                      results(i);
+                    }}
                     doEvaluation = {(i: any) => {
                       closeSlidingParticipants();
                       doEvaluation(i);

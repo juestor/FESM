@@ -31,6 +31,7 @@ import TestMenu from './components/TestMenu/TestMenu';
 
 /* Firebase imports */
 import firebase from 'firebase/app';
+import ResultsParticipant from './components/ResultsParticipant/ResultsParticipant';
 
 //TODO: put in a separate file and exclude from git
 const firebaseConfig = {
@@ -56,6 +57,7 @@ const App: React.FC = () => (
         <Route path='/FESM/MyParticipants' component={() => <MyParticipants />} exact={true} />
         <Route path='/FESM/Information' component={() => <Information />} exact={true} />
         <Route path='/FESM/TestMenu' component={() => <TestMenu />} exact={true} />
+        <Route path='/FESM/Results' component={() => <ResultsParticipant />} exact={true} />
         <Route exact path='/' render={() => <Redirect to='/FESM' />} />
       </IonRouterOutlet>
     </IonReactRouter>
