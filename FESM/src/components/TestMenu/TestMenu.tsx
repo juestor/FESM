@@ -473,7 +473,7 @@ export default function TestMenu(){
                     density = (1.112 - (0.00043499 * sumatoria) + (0.00000055 * sumatoria^2) - (0.00028826 * age));
                   }
 
-                  setNutritionalValue(((405/density) - 450));
+                  setNutritionalValue(((495/density) - 450));
                 }
               }
               setShowNutritionalModal(false);
