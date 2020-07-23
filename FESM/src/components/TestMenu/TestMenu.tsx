@@ -466,8 +466,7 @@ export default function TestMenu(){
                 if(tricepsFold && subscapularFold && pectoralFold && axillaryFold && supraIliacFold && abdominalFold && anteriorThighFold) {
                   const sumatoria = tricepsFold + subscapularFold + pectoralFold + axillaryFold + supraIliacFold + abdominalFold + anteriorThighFold;
                   let density;
-console.log("age",age);
-console.log("sumatoria",sumatoria);
+
                   if(gender === 'female') {
                     density = (1.097 - (0.00046971 * sumatoria) + (0.00000056 * sumatoria * sumatoria) - (0.00012828 * age));
                   } else {
