@@ -466,11 +466,12 @@ export default function TestMenu(){
                 if(tricepsFold && subscapularFold && pectoralFold && axillaryFold && supraIliacFold && abdominalFold && anteriorThighFold) {
                   const sumatoria = tricepsFold + subscapularFold + pectoralFold + axillaryFold + supraIliacFold + abdominalFold + anteriorThighFold;
                   let density;
-
+console.log("age",age);
+console.log("sumatoria",sumatoria);
                   if(gender === 'female') {
-                    density = (1.097 - (0.00046971 * sumatoria) + (0.00000056 * sumatoria^2) - (0.00012828 * age));
+                    density = (1.097 - (0.00046971 * sumatoria) + (0.00000056 * sumatoria * sumatoria) - (0.00012828 * age));
                   } else {
-                    density = (1.112 - (0.00043499 * sumatoria) + (0.00000055 * sumatoria^2) - (0.00028826 * age));
+                    density = (1.112 - (0.00043499 * sumatoria) + (0.00000055 * sumatoria * sumatoria) - (0.00028826 * age));
                   }
 
                   setNutritionalValue(((495/density) - 450));
