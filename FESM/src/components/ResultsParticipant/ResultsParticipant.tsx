@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation  } from "react-router-dom";
 import firebase from 'firebase';
-import { useCollection } from 'react-firebase-hooks/firestore';
 import {
-  IonList,
   IonContent,
   IonHeader,
   IonPage,
@@ -15,10 +13,16 @@ import {
   IonRow,
   IonCol
 } from '@ionic/react';
+import { Radar } from 'react-chartjs-2';
 
 import './ResultsParticipant.css';
 
 export default function ResultsParticipant(){
+  const [evaluations, setEvaluations] = useState<any>();
+  const [evaluationLabels, setEvaluationLabels] = useState<string[]>();
+  const [evaluationValues, setEvaluationValues] = useState<any[]>();
+  const [chartData, setChartData] = useState<any>();
+
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   }
@@ -27,13 +31,87 @@ export default function ResultsParticipant(){
   let history = useHistory();
   let participantId = query.get("id");
   let participantName = query.get("name") ? ' - ' + query.get("name") : '';
+  let dataChart: { labels: string[]; datasets: any[]; };
 
-  const [value, loading, error] = useCollection(
-    firebase.firestore().collection("Evaluations").orderBy("lastModifiedOn", "desc"),
-    {
-      snapshotListenOptions:{includeMetadataChanges: true}
+  const getEvaluationList = (participantId: string) => {
+    return firebase.firestore().collection("Evaluations")
+      .where('participantId', '==', participantId)
+      .orderBy("lastModifiedOn", "desc")
+      .get();
+  };
+
+  useEffect(() => {
+    if (participantId && !evaluations && !evaluationValues && !chartData) {
+      console.log('HOOOOLA');
+      getEvaluationList(participantId)
+        .then(evaluationListResult => {
+          let evaluationList: any[] = [];
+
+          if(!evaluations && !chartData) {
+            evaluationListResult.forEach(function(doc) {
+              if(doc.exists) {
+                const evaluation: any = {
+                  id: doc.id,
+                  ...doc.data()
+                };
+                console.log('evaluation', evaluation);
+                evaluationList.push(evaluation);
+              }
+            });
+            if (evaluationList) {
+              console.log('evaluationList', evaluationList);
+              setEvaluations(evaluationList);              
+              setEvaluationLabels([
+                'Cardiovascular',
+                'Fuerza M. Superior',
+                'Fuerza m. Inferior',
+                'Resistencia ABS',
+                'Resistencia Flexiones',
+                'Flexibilidad',
+                'Estado Nutricional'
+              ]);
+            }
+          }
+        })
+        .catch((error) => console.log('ERROR GET EVALUATIONS', error));
     }
-  );
+    if (evaluations && !evaluationValues && !chartData) {
+      console.log('****evaluations', evaluations);
+
+      const currentEvaluationsValues: any[] = evaluations.map((evaluation: any) => {
+        return {
+          date: new Date(evaluation.lastModifiedOn),
+          values: [
+            evaluation.cardio as number,
+            evaluation.strengthUpper as number,
+            evaluation.strengthLower as number,
+            evaluation.resistanceABS as number,
+            evaluation.resistancePushUps as number,
+            evaluation.flexibility as number,
+            evaluation.nutritional as number
+          ]
+        };
+      });
+
+      console.log('currentEvaluationsValues', currentEvaluationsValues);
+      setEvaluationValues(currentEvaluationsValues);
+    }
+
+    if (evaluationValues && !chartData) {
+      const dataset: any[] = evaluationValues.map((evaluationValue) => {
+        return {
+          label: evaluationValue.date,
+          data:evaluationValue.values
+        };
+      });
+      console.log('evaluationLabels', evaluationLabels);
+      console.log('dataset', dataset);
+      setChartData({
+        labels: evaluationLabels,
+        datasets: dataset
+      });
+    }   
+  }, [evaluations, participantId, chartData, evaluationValues, evaluationLabels]);
 
   return (
     <>
@@ -59,10 +137,9 @@ export default function ResultsParticipant(){
               <IonCol>Value 6</IonCol>
               <IonCol>Value 7</IonCol>
             </IonRow>
-            {value && value.docs.map(doc => {
-              const result = doc.data();
+            {evaluations && evaluations.map((doc: any) => {
+              const result = doc;
               return (
-                !loading && (
                 <IonRow key = {doc.id} >
                   <IonCol>{result.lastModifiedOn}</IonCol>
                   <IonCol>{result.cardio}</IonCol>
@@ -73,10 +150,16 @@ export default function ResultsParticipant(){
                   <IonCol>{result.StrengthLower}</IonCol>
                   <IonCol>{result.StrengthUpper}</IonCol>
                 </IonRow>
-                )
               );
             })}
           </IonGrid>
+
+          <div>
+            {console.log('chartData', chartData)}
+            {chartData && (
+              <Radar data={chartData}></Radar>
+            )}
+          </div>
         </IonContent>
       </IonPage>
     </>
