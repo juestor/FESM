@@ -30,10 +30,6 @@ export default function MyParticipant({results, doEvaluation, doEdit, doDelete, 
 
   const fecha: string = `${weekdays[date.getDay()]} ${date.getUTCDay()} de ${months[date.getMonth() - 1]} del ${date.getFullYear()}`;
 
-  console.log('DIA', weekdays[date.getDay()]);
-  console.log('DIA #', date.getUTCDay());
-  console.log('MES', months[date.getMonth() - 1]);
-  console.log('AÑO', date.getFullYear());
   return(
     <IonItemSliding>
       <IonItem>

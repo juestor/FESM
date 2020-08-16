@@ -150,12 +150,10 @@ export default function TestMenu(){
     {
         age_now--;
     }
-    console.log(age_now);
     return age_now;
   }
 
   const save = async() => {
-    console.log('***************** SAVEEEEEE');
     let collectionRef = firebase.firestore().collection('Evaluations');
     await collectionRef.add(
       {

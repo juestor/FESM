@@ -42,7 +42,6 @@ export default function ResultsParticipant(){
 
   useEffect(() => {
     if (participantId && !evaluations && !evaluationValues && !chartData) {
-      console.log('HOOOOLA');
       getEvaluationList(participantId)
         .then(evaluationListResult => {
           let evaluationList: any[] = [];
@@ -54,12 +53,10 @@ export default function ResultsParticipant(){
                   id: doc.id,
                   ...doc.data()
                 };
-                console.log('evaluation', evaluation);
                 evaluationList.push(evaluation);
               }
             });
             if (evaluationList) {
-              console.log('evaluationList', evaluationList);
               setEvaluations(evaluationList);              
               setEvaluationLabels([
                 'Cardiovascular',
@@ -76,8 +73,6 @@ export default function ResultsParticipant(){
         .catch((error) => console.log('ERROR GET EVALUATIONS', error));
     }
     if (evaluations && !evaluationValues && !chartData) {
-      console.log('****evaluations', evaluations);
-
       const currentEvaluationsValues: any[] = evaluations.map((evaluation: any) => {
         return {
           date: new Date(evaluation.lastModifiedOn),
@@ -93,7 +88,6 @@ export default function ResultsParticipant(){
         };
       });
 
-      console.log('currentEvaluationsValues', currentEvaluationsValues);
       setEvaluationValues(currentEvaluationsValues);
     }
 
@@ -104,8 +98,6 @@ export default function ResultsParticipant(){
           data:evaluationValue.values
         };
       });
-      console.log('evaluationLabels', evaluationLabels);
-      console.log('dataset', dataset);
       setChartData({
         labels: evaluationLabels,
         datasets: dataset
@@ -155,7 +147,6 @@ export default function ResultsParticipant(){
           </IonGrid>
 
           <div>
-            {console.log('chartData', chartData)}
             {chartData && (
               <Radar data={chartData}></Radar>
             )}
