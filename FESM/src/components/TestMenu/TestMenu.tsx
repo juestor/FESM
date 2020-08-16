@@ -63,42 +63,42 @@ export enum nutritionalOptions {
 };
 
 export default function TestMenu(){
-  const [gender, setGender] = useState<string>('');
-  const [weight, setWeight] = useState<number>(0);
-  const [age, setAge] = useState<number>(0);
+  const [gender, setGender] = useState<string>();
+  const [weight, setWeight] = useState<number>();
+  const [age, setAge] = useState<number>();
 
   const [showCardioModal, setShowCardioModal] = useState<boolean>(false);
   const [cardioOption, setCardioOption] = useState<string>(cardioOptions.calculated);
-  const [cardio, setCardio] = useState<number>(0);
+  const [cardio, setCardio] = useState<number>();
   const [cardioVatios, setCardioVatios] = useState<number>();
   const [cardioVel, setCardioVel] = useState<number>();
   const [cardioTrend, setCardioTrend] = useState<number>();
 
   const [showStrengthModal, setShowStrengthModal] = useState<boolean>(false);
   const [strengthOption, setStrengthOption] = useState<string>(strengthOptions.upper);
-  const [strengthUpper, setStrengthUpper] = useState<number>(0);
-  const [strengthLower, setStrengthLower] = useState<number>(0);
+  const [strengthUpper, setStrengthUpper] = useState<number>();
+  const [strengthLower, setStrengthLower] = useState<number>();
   const [strengthUpperValue, setStrengthUpperValue] = useState<number>();
   const [strengthLowerValue, setStrengthLowerValue] = useState<number>();
 
   const [showResistanceModal, setShowResistanceModal] = useState<boolean>(false);
   const [resistanceOption, setResistanceOption] = useState<string>(resistanceOptions.abs);
-  const [resistanceABS, setResistanceABS] = useState<number>(0);
-  const [resistancePushUps, setResistancePushUps] = useState<number>(0);
+  const [resistanceABS, setResistanceABS] = useState<number>();
+  const [resistancePushUps, setResistancePushUps] = useState<number>();
   
   const [showFlexibilityModal, setShowFlexibilityModal] = useState<boolean>(false);
-  const [flexibility, setFlexibility] = useState<number>(0);
+  const [flexibility, setFlexibility] = useState<number>();
   
   const [showNutritionalModal, setShowNutritionalModal] = useState<boolean>(false);
   const [nutritionalOption, setNutritionalOption] = useState<string>(nutritionalOptions.direct);
-  const [nutritionalValue, setNutritionalValue] = useState<number>(0);
-  const [tricepsFold, setTricepsFold] = useState<number>(0);
-  const [subscapularFold, setSubscapularFold] = useState<number>(0);
-  const [pectoralFold, setPectoralFold] = useState<number>(0);
-  const [axillaryFold, setAxillaryFold] = useState<number>(0);
-  const [supraIliacFold, setSupraIliacFold] = useState<number>(0);
-  const [abdominalFold, setAbdominalFold] = useState<number>(0);
-  const [anteriorThighFold, setAnteriorThighFold] = useState<number>(0);
+  const [nutritionalValue, setNutritionalValue] = useState<number>();
+  const [tricepsFold, setTricepsFold] = useState<number>();
+  const [subscapularFold, setSubscapularFold] = useState<number>();
+  const [pectoralFold, setPectoralFold] = useState<number>();
+  const [axillaryFold, setAxillaryFold] = useState<number>();
+  const [supraIliacFold, setSupraIliacFold] = useState<number>();
+  const [abdominalFold, setAbdominalFold] = useState<number>();
+  const [anteriorThighFold, setAnteriorThighFold] = useState<number>();
 
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -126,9 +126,17 @@ export default function TestMenu(){
         history.push('/FESM');
       }
 
-      setGender(data?.gender);
-      setWeight(data?.weight);
-      setAge(calculate_age(data?.birthDate));
+      if(data){
+        if (data.gender) {
+          setGender(data.gender);
+        }
+        if (data.weight) {
+          setWeight(data?.weight);
+        }
+        if (data.birthDate) {
+          setAge(calculate_age(data?.birthDate));
+        }
+      }
     }
   },
   [history, participantId, participantName, value]);
@@ -289,7 +297,7 @@ export default function TestMenu(){
                 }
               </div>
               <IonButton onClick={() => {
-                if (cardioOption === cardioOptions.bicycle && cardioVatios) {
+                if (cardioOption === cardioOptions.bicycle && cardioVatios && weight && weight > 0) {
                   const vo2rest = gender === 'female' ? 300 : 350;
                   setCardio((vo2rest + (12 * cardioVatios))/weight);
                 }
@@ -340,11 +348,11 @@ export default function TestMenu(){
               </div>
             </div>
             <IonButton onClick={() => {
-              if (strengthUpperValue) {
+              if (strengthUpperValue && weight && weight > 0) {
                 setStrengthUpper(strengthUpperValue / weight);
               }
 
-              if (strengthLowerValue) {
+              if (strengthLowerValue && weight && weight > 0) {
                 setStrengthLower(strengthLowerValue / weight);
               }
               setShowStrengthModal(false);
@@ -467,7 +475,10 @@ export default function TestMenu(){
                   const sumatoria = tricepsFold + subscapularFold + pectoralFold + axillaryFold + supraIliacFold + abdominalFold + anteriorThighFold;
                   let density;
 
-                  if(gender === 'female') {
+                  if(!age)
+                    return;
+
+                  if(gender === 'female' ) {
                     density = (1.097 - (0.00046971 * sumatoria) + (0.00000056 * sumatoria * sumatoria) - (0.00012828 * age));
                   } else {
                     density = (1.112 - (0.00043499 * sumatoria) + (0.00000055 * sumatoria * sumatoria) - (0.00028826 * age));

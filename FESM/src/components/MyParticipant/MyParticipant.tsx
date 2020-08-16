@@ -1,22 +1,49 @@
 import React from 'react';
 import { IonItem, IonLabel, IonText, IonItemSliding, IonItemOption, IonItemOptions, IonIcon } from '@ionic/react';
-import { document, trash, analytics, barChart } from 'ionicons/icons';
+import { pencil, trash, calculator, barChart } from 'ionicons/icons';
 
 export default function MyParticipant({results, doEvaluation, doEdit, doDelete, doc}: any){
   let data = doc.data();
+  let date = new Date(data.lastModifiedOn);
+  let weekdays = new Array(7);
+  weekdays[0] = "Domingo";
+  weekdays[1] = "Lunes";
+  weekdays[2] = "Martes";
+  weekdays[3] = "Miércoles";
+  weekdays[4] = "Jueves";
+  weekdays[5] = "Viernes";
+  weekdays[6] = "Sábado";
 
+  let months = new Array(12);
+  months[0] = "Enero";
+  months[1] = "Febrero";
+  months[2] = "Marzo";
+  months[3] = "Abril";
+  months[4] = "Mayo";
+  months[5] = "Junio";
+  months[6] = "Julio";
+  months[7] = "Agosto";
+  months[8] = "Septiembre";
+  months[9] = "Octubre";
+  months[10] = "Noviembre";
+  months[11] = "Diciembre";
+
+  const fecha: string = `${weekdays[date.getDay()]} ${date.getUTCDay()} de ${months[date.getMonth() - 1]} del ${date.getFullYear()}`;
+
+  console.log('DIA', weekdays[date.getDay()]);
+  console.log('DIA #', date.getUTCDay());
+  console.log('MES', months[date.getMonth() - 1]);
+  console.log('AÑO', date.getFullYear());
   return(
     <IonItemSliding>
       <IonItem>
-        <IonLabel class = "ion-text-wrap">
-          <IonText class= "item-title">
-            <div>{data.name}</div>
+        <IonLabel>
+          <IonText color="primary">
+            <h1>{data.name} {data.lastName}</h1>
           </IonText>
-          <IonText class= "item-sub-title">
-            <div>{data.lastName}</div>
-          </IonText>
-          <IonText class= "item-id">
-            <div>{new Date(data.lastModifiedOn) + ''}</div>
+          <IonText>
+            <p>Última actualización</p>
+            <p>{fecha}</p>
           </IonText>
         </IonLabel>
         <div></div>
@@ -26,12 +53,12 @@ export default function MyParticipant({results, doEvaluation, doEdit, doDelete, 
           <IonIcon slot="icon-only" icon={barChart}>
           </IonIcon>
         </IonItemOption>
-        <IonItemOption color="primary" onClick= {() => doEvaluation(doc.id)}>
-          <IonIcon slot="icon-only" icon={analytics}>
+        <IonItemOption color="success" onClick= {() => doEvaluation(doc.id)}>
+          <IonIcon slot="icon-only" icon={calculator}>
           </IonIcon>
         </IonItemOption>
-        <IonItemOption color="secondary" onClick={() => doEdit(doc.id)}>
-          <IonIcon slot="icon-only" icon={document}>
+        <IonItemOption color="warning" onClick={() => doEdit(doc.id)}>
+          <IonIcon slot="icon-only" icon={pencil}>
           </IonIcon>
         </IonItemOption>
         <IonItemOption color="danger" onClick= {() => doDelete(doc.id)}>
