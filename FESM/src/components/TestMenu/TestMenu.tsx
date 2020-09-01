@@ -40,6 +40,7 @@ import {
 import './TestMenu.css';
 import { useDocument } from 'react-firebase-hooks/firestore';
 import firebase from 'firebase';
+import PercentileService from '../../common/services/percentile.service';
 
 export enum cardioOptions {
   calculated = 'calculated',
@@ -70,6 +71,7 @@ export default function TestMenu(){
   const [showCardioModal, setShowCardioModal] = useState<boolean>(false);
   const [cardioOption, setCardioOption] = useState<string>(cardioOptions.calculated);
   const [cardio, setCardio] = useState<number>();
+  const [cardioValue, setCardioValue] = useState<number>();
   const [cardioVatios, setCardioVatios] = useState<number>();
   const [cardioVel, setCardioVel] = useState<number>();
   const [cardioTrend, setCardioTrend] = useState<number>();
@@ -83,10 +85,13 @@ export default function TestMenu(){
 
   const [showResistanceModal, setShowResistanceModal] = useState<boolean>(false);
   const [resistanceOption, setResistanceOption] = useState<string>(resistanceOptions.abs);
+  const [resistanceABSValue, setResistanceABSValue] = useState<number>();
   const [resistanceABS, setResistanceABS] = useState<number>();
+  const [resistancePushUpsValue, setResistancePushUpsValue] = useState<number>();
   const [resistancePushUps, setResistancePushUps] = useState<number>();
   
   const [showFlexibilityModal, setShowFlexibilityModal] = useState<boolean>(false);
+  const [flexibilityValue, setFlexibilityValue] = useState<number>();
   const [flexibility, setFlexibility] = useState<number>();
   
   const [showNutritionalModal, setShowNutritionalModal] = useState<boolean>(false);
@@ -267,7 +272,7 @@ export default function TestMenu(){
                     <div>Calculo directo</div>
                     <IonItem>
                       <IonLabel position="floating">Valor de ergoespirometria</IonLabel>
-                      <IonInput value={cardio} onIonChange={e => setCardio(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={cardioValue} onIonChange={e => setCardioValue(parseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -295,15 +300,28 @@ export default function TestMenu(){
                 }
               </div>
               <IonButton onClick={() => {
+                let result: number = 0;
+                if (cardioOption === cardioOptions.calculated && cardioValue) {
+                  result = cardioValue;
+                }
+
                 if (cardioOption === cardioOptions.bicycle && cardioVatios && weight && weight > 0) {
                   const vo2rest = gender === 'female' ? 300 : 350;
-                  setCardio((vo2rest + (12 * cardioVatios))/weight);
+                  result = (vo2rest + (12 * cardioVatios))/weight;
                 }
 
                 if (cardioOption === cardioOptions.walking && cardioVel && cardioTrend) {
                   const velMMin = cardioVel * 26.8;
                   const trendDouble = cardioTrend / 100;
-                  setCardio((0.2 * velMMin) + (0.9 * velMMin * trendDouble) + 3.5);
+                  result = (0.2 * velMMin) + (0.9 * velMMin * trendDouble) + 3.5;
+                }
+
+                if(age && gender) {
+                  const percentile = PercentileService.getVo2Percentile(result, age, gender);
+                  console.log('CARDIO');
+                  console.log('result', result);
+                  console.log('percentile - V02', percentile);
+                  setCardio(percentile);
                 }
 
                 setShowCardioModal(false);
@@ -346,13 +364,31 @@ export default function TestMenu(){
               </div>
             </div>
             <IonButton onClick={() => {
+              let result: number = 0;
               if (strengthUpperValue && weight && weight > 0) {
-                setStrengthUpper(strengthUpperValue / weight);
+                result = strengthUpperValue / weight;
+
+                if(age && gender) {
+                  const percentile = PercentileService.getChestPressPercentile(result, age, gender);
+                  console.log('Upper Strength');
+                  console.log('result', result);
+                  console.log('percentile - ChestPress', percentile);
+                  setStrengthUpper(percentile);
+                }
               }
 
               if (strengthLowerValue && weight && weight > 0) {
-                setStrengthLower(strengthLowerValue / weight);
+                result = strengthLowerValue / weight;
+
+                if(age && gender) {
+                  const percentile = PercentileService.getLegPressPercentile(result, age, gender);
+                  console.log('Lower Strength');
+                  console.log('result', result);
+                  console.log('percentile - LegPress', percentile);
+                  setStrengthLower(percentile);
+                }
               }
+              
               setShowStrengthModal(false);
             }}>
                 Close Fuerza Modal
@@ -374,7 +410,7 @@ export default function TestMenu(){
                     <div>Abdominales</div>
                     <IonItem>
                       <IonLabel position="floating"># abdominales (1 m)</IonLabel>
-                      <IonInput value={resistanceABS} onIonChange={e => setResistanceABS(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={resistanceABSValue} onIonChange={e => setResistanceABSValue(parseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -383,13 +419,31 @@ export default function TestMenu(){
                     <div>Flexiones de pecho</div>
                     <IonItem>
                       <IonLabel position="floating"># flexiones de pecho (1 m)</IonLabel>
-                      <IonInput value={resistancePushUps} onIonChange={e => setResistancePushUps(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={resistancePushUpsValue} onIonChange={e => setResistancePushUpsValue(parseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
               </div>
             </div>
-            <IonButton onClick={() => setShowResistanceModal(false)}>
+            <IonButton onClick={() => {
+              if(resistanceABSValue && age && gender) {
+                const percentile = PercentileService.getAbsPercentile(resistanceABSValue, age, gender);
+                console.log('ABS');
+                console.log('resistanceABSValue', resistanceABSValue);
+                console.log('percentile - Abs', percentile);
+                setResistanceABS(percentile);
+              }
+
+              if(resistancePushUpsValue && age && gender) {
+                const percentile = PercentileService.getPushUpsPercentile(resistancePushUpsValue, age, gender);
+                console.log('PushUps');
+                console.log('resistancePushUpsValue', resistancePushUpsValue);
+                console.log('percentile - Push Ups', percentile);
+                setResistancePushUps(percentile);
+              }
+
+              setShowResistanceModal(false);
+            }}>
                 Close Resistencia Modal
             </IonButton>
           </IonModal>
@@ -403,12 +457,22 @@ export default function TestMenu(){
                   <div>Flexibilidad</div>
                   <IonItem>
                     <IonLabel position="floating">distancia (cm)</IonLabel>
-                    <IonInput value={flexibility} onIonChange={e => setFlexibility(parseFloat(e.detail.value!))}></IonInput>
+                    <IonInput value={flexibilityValue} onIonChange={e => setFlexibilityValue(parseFloat(e.detail.value!))}></IonInput>
                   </IonItem>
                 </div>
               </div>
             </div>
-            <IonButton onClick={() => setShowFlexibilityModal(false)}>
+            <IonButton onClick={() => {
+              if(flexibilityValue && age && gender) {
+                const percentile = PercentileService.getSitNReachPercentile(flexibilityValue, age, gender);
+                console.log('Sit N Reach');
+                console.log('flexibilityValue', flexibilityValue);
+                console.log('percentile - Flexibility', percentile);
+                setFlexibility(percentile);
+              }
+
+              setShowFlexibilityModal(false);
+            }}>
                 Close Flexibilidad Modal
             </IonButton>
           </IonModal>
@@ -470,6 +534,7 @@ export default function TestMenu(){
             <IonButton onClick={() => {
               if(nutritionalOption === nutritionalOptions.folds){
                 if(tricepsFold && subscapularFold && pectoralFold && axillaryFold && supraIliacFold && abdominalFold && anteriorThighFold) {
+                  let result: number = 0;
                   const sumatoria = tricepsFold + subscapularFold + pectoralFold + axillaryFold + supraIliacFold + abdominalFold + anteriorThighFold;
                   let density;
 
@@ -482,7 +547,14 @@ export default function TestMenu(){
                     density = (1.112 - (0.00043499 * sumatoria) + (0.00000055 * sumatoria * sumatoria) - (0.00028826 * age));
                   }
 
-                  setNutritionalValue(((495/density) - 450));
+                  result = ((495/density) - 450);
+                  if(result && age && gender) {
+                    const percentile = PercentileService.getGreasyPercentile(result, age, gender);
+                    console.log('Nutritional');
+                    console.log('result', result);
+                    console.log('percentile - Greasy', percentile);
+                    setNutritionalValue(percentile);
+                  }
                 }
               }
               setShowNutritionalModal(false);

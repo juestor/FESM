@@ -29,8 +29,8 @@ const getPercentile = (value: number, percentiles: Percentile[]) : number=> {
       const minDiff = value - percentile.value;
       const modMinDif = (minDiff < 0) ? (minDiff * -1) : minDiff;
 
-      if (minValue) {
-        if (modMinDif < minValue) {
+      if (minValue !== undefined) {
+        if (modMinDif <= minValue) {
           minValue = modMinDif;
           result = percentile.percentile;
         }
@@ -47,9 +47,11 @@ const getPercentile = (value: number, percentiles: Percentile[]) : number=> {
 const PercentileService = {
   getGreasyPercentile: (value: number, age: number, gender: string): number => {
     const genderPercentiles = getGenderPercentiles(gender, GreasyPercentilesValues);
-
     const ageRangePercentiles = getPercentiles(age, genderPercentiles);
-
+    console.log('gender', gender);
+    console.log('age', age);
+    console.log('value', value);
+    console.log('ageRangePercentiles', ageRangePercentiles);
     return getPercentile(value, ageRangePercentiles);
   },
   getAbsPercentile: (value: number, age: number, gender: string): number => {
@@ -91,7 +93,10 @@ const PercentileService = {
     const genderPercentiles = getGenderPercentiles(gender, Vo2PercentilesValues);
 
     const ageRangePercentiles = getPercentiles(age, genderPercentiles);
-
+    console.log('gender', gender);
+    console.log('age', age);
+    console.log('value', value);
+    console.log('ageRangePercentiles', ageRangePercentiles);
     return getPercentile(value, ageRangePercentiles);
   },
 }
