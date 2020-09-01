@@ -70,6 +70,11 @@ function NewParticipant () {
   },
   [loading, initialValue, value]);
 
+  const safeParseFloat = (inputValue: string) => {
+    const value = Number.parseFloat(inputValue);
+    return Number.isNaN(value) ? 0 : value;    
+  }
+
   const onClear = () => {
     initialValue = null;
   };
@@ -150,12 +155,12 @@ function NewParticipant () {
 
             <IonItem>
               <IonLabel position="floating">Peso (Kg)</IonLabel>
-              <IonInput type="number" value={weight} onIonChange={e => setWeight(parseFloat(e.detail.value!))}></IonInput>
+              <IonInput type="number" value={weight} onIonChange={e => setWeight(safeParseFloat(e.detail.value!))}></IonInput>
             </IonItem>
 
             <IonItem>
               <IonLabel position="floating">Altura (cm)</IonLabel>
-              <IonInput type="number" value={height} onIonChange={e => setHeight(parseFloat(e.detail.value!))}></IonInput>
+              <IonInput type="number" value={height} onIonChange={e => setHeight(safeParseFloat(e.detail.value!))}></IonInput>
             </IonItem>
 
             <IonItem>

@@ -48,55 +48,36 @@ const PercentileService = {
   getGreasyPercentile: (value: number, age: number, gender: string): number => {
     const genderPercentiles = getGenderPercentiles(gender, GreasyPercentilesValues);
     const ageRangePercentiles = getPercentiles(age, genderPercentiles);
-    console.log('gender', gender);
-    console.log('age', age);
-    console.log('value', value);
-    console.log('ageRangePercentiles', ageRangePercentiles);
     return getPercentile(value, ageRangePercentiles);
   },
   getAbsPercentile: (value: number, age: number, gender: string): number => {
     const genderPercentiles = getGenderPercentiles(gender, AbsPercentilesValues);
-
     const ageRangePercentiles = getPercentiles(age, genderPercentiles);
-
     return getPercentile(value, ageRangePercentiles);
   },
   getPushUpsPercentile: (value: number, age: number, gender: string): number => {
     const genderPercentiles = getGenderPercentiles(gender, PushUpsPercentilesValues);
-
     const ageRangePercentiles = getPercentiles(age, genderPercentiles);
-
     return getPercentile(value, ageRangePercentiles);
   },
   getSitNReachPercentile: (value: number, age: number, gender: string): number => {
     const genderPercentiles = getGenderPercentiles(gender, SitNReachPercentilesValues);
-
     const ageRangePercentiles = getPercentiles(age, genderPercentiles);
-
     return getPercentile(value, ageRangePercentiles);
   },
   getChestPressPercentile: (value: number, age: number, gender: string): number => {
     const genderPercentiles = getGenderPercentiles(gender, ChestPressPercentilesValues);
-
     const ageRangePercentiles = getPercentiles(age, genderPercentiles);
-
     return getPercentile(value, ageRangePercentiles);
   },
   getLegPressPercentile: (value: number, age: number, gender: string): number => {
     const genderPercentiles = getGenderPercentiles(gender, LegPressPercentilesValues);
-
     const ageRangePercentiles = getPercentiles(age, genderPercentiles);
-
     return getPercentile(value, ageRangePercentiles);
   },
   getVo2Percentile: (value: number, age: number, gender: string): number => {
     const genderPercentiles = getGenderPercentiles(gender, Vo2PercentilesValues);
-
     const ageRangePercentiles = getPercentiles(age, genderPercentiles);
-    console.log('gender', gender);
-    console.log('age', age);
-    console.log('value', value);
-    console.log('ageRangePercentiles', ageRangePercentiles);
     return getPercentile(value, ageRangePercentiles);
   },
 }

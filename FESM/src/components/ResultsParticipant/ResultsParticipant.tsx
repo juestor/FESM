@@ -47,6 +47,7 @@ export default function ResultsParticipant(){
           let evaluationList: any[] = [];
 
           if(!evaluations && !chartData) {
+            
             evaluationListResult.forEach(function(doc) {
               if(doc.exists) {
                 const evaluation: any = {
@@ -61,7 +62,7 @@ export default function ResultsParticipant(){
               setEvaluationLabels([
                 'Cardiovascular',
                 'Fuerza M. Superior',
-                'Fuerza m. Inferior',
+                'Fuerza M. Inferior',
                 'Resistencia ABS',
                 'Resistencia Flexiones',
                 'Flexibilidad',
@@ -139,8 +140,8 @@ export default function ResultsParticipant(){
                   <IonCol>{result.nutritional}</IonCol>
                   <IonCol>{result.resistanceABS}</IonCol>
                   <IonCol>{result.resistancePushUps}</IonCol>
-                  <IonCol>{result.StrengthLower}</IonCol>
-                  <IonCol>{result.StrengthUpper}</IonCol>
+                  <IonCol>{result.strengthLower}</IonCol>
+                  <IonCol>{result.strengthUpper}</IonCol>
                 </IonRow>
               );
             })}

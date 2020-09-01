@@ -97,6 +97,7 @@ export default function TestMenu(){
   const [showNutritionalModal, setShowNutritionalModal] = useState<boolean>(false);
   const [nutritionalOption, setNutritionalOption] = useState<string>(nutritionalOptions.direct);
   const [nutritionalValue, setNutritionalValue] = useState<number>();
+  const [nutritional, setNutritional] = useState<number>();
   const [tricepsFold, setTricepsFold] = useState<number>();
   const [subscapularFold, setSubscapularFold] = useState<number>();
   const [pectoralFold, setPectoralFold] = useState<number>();
@@ -158,6 +159,11 @@ export default function TestMenu(){
     return age_now;
   }
 
+  const safeParseFloat = (inputValue: string) => {
+    const value = Number.parseFloat(inputValue);
+    return Number.isNaN(value) ? 0 : value;    
+  }
+
   const save = async() => {
     let collectionRef = firebase.firestore().collection('Evaluations');
     await collectionRef.add(
@@ -169,7 +175,7 @@ export default function TestMenu(){
         resistanceABS,
         resistancePushUps,
         flexibility,
-        nutritional: nutritionalValue,
+        nutritional,
         lastModifiedOn: new Date().getTime()
       }
     );
@@ -180,7 +186,7 @@ export default function TestMenu(){
     setResistanceABS(0);
     setResistancePushUps(0);
     setFlexibility(0);
-    setNutritionalValue(0);
+    setNutritional(0);
     
     history.push('/FESM');
   };
@@ -247,7 +253,7 @@ export default function TestMenu(){
             <IonItem onClick={() => setShowNutritionalModal(true)}>
               <IonCard className="card">
                 <IonIcon className="iconClass" icon={fastFoodSharp}></IonIcon>
-                <IonBadge color="primary">{nutritionalValue}</IonBadge>
+                <IonBadge color="primary">{nutritional}</IonBadge>
                 <IonCardHeader>
                   <IonCardTitle>Estado Nutricional</IonCardTitle>
                 </IonCardHeader>
@@ -272,7 +278,7 @@ export default function TestMenu(){
                     <div>Calculo directo</div>
                     <IonItem>
                       <IonLabel position="floating">Valor de ergoespirometria</IonLabel>
-                      <IonInput value={cardioValue} onIonChange={e => setCardioValue(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={cardioValue} onIonChange={e => setCardioValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -281,7 +287,7 @@ export default function TestMenu(){
                     <div>Calculo indirecto - Bicicleta</div>
                     <IonItem>
                       <IonLabel position="floating">Vatios</IonLabel>
-                      <IonInput value={cardioVatios} onIonChange={e => setCardioVatios(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={cardioVatios} onIonChange={e => setCardioVatios(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -290,11 +296,11 @@ export default function TestMenu(){
                     <div>Calculo indirecto - Trote</div>
                     <IonItem>
                       <IonLabel position="floating">Velocidad (Millas/min)</IonLabel>
-                      <IonInput value={cardioVel} onIonChange={e => setCardioVel(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={cardioVel} onIonChange={e => setCardioVel(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                     <IonItem>
                       <IonLabel position="floating">Inclinacion (%)</IonLabel>
-                      <IonInput value={cardioTrend} onIonChange={e => setCardioTrend(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={cardioTrend} onIonChange={e => setCardioTrend(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -348,7 +354,7 @@ export default function TestMenu(){
                     <div>Tronco Superior</div>
                     <IonItem>
                       <IonLabel position="floating">Peso (Kg)</IonLabel>
-                      <IonInput value={strengthUpperValue} onIonChange={e => setStrengthUpperValue(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={strengthUpperValue} onIonChange={e => setStrengthUpperValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -357,7 +363,7 @@ export default function TestMenu(){
                     <div>Tronco Inferior</div>
                     <IonItem>
                       <IonLabel position="floating">Peso (Kg)</IonLabel>
-                      <IonInput value={strengthLowerValue} onIonChange={e => setStrengthLowerValue(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={strengthLowerValue} onIonChange={e => setStrengthLowerValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -410,7 +416,7 @@ export default function TestMenu(){
                     <div>Abdominales</div>
                     <IonItem>
                       <IonLabel position="floating"># abdominales (1 m)</IonLabel>
-                      <IonInput value={resistanceABSValue} onIonChange={e => setResistanceABSValue(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={resistanceABSValue} onIonChange={e => setResistanceABSValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -419,7 +425,7 @@ export default function TestMenu(){
                     <div>Flexiones de pecho</div>
                     <IonItem>
                       <IonLabel position="floating"># flexiones de pecho (1 m)</IonLabel>
-                      <IonInput value={resistancePushUpsValue} onIonChange={e => setResistancePushUpsValue(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={resistancePushUpsValue} onIonChange={e => setResistancePushUpsValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -457,7 +463,7 @@ export default function TestMenu(){
                   <div>Flexibilidad</div>
                   <IonItem>
                     <IonLabel position="floating">distancia (cm)</IonLabel>
-                    <IonInput value={flexibilityValue} onIonChange={e => setFlexibilityValue(parseFloat(e.detail.value!))}></IonInput>
+                    <IonInput value={flexibilityValue} onIonChange={e => setFlexibilityValue(safeParseFloat(e.detail.value!))}></IonInput>
                   </IonItem>
                 </div>
               </div>
@@ -492,7 +498,7 @@ export default function TestMenu(){
                     <div>Calculo directo</div>
                     <IonItem>
                       <IonLabel position="floating">% graso</IonLabel>
-                      <IonInput value={nutritionalValue} onIonChange={e => setNutritionalValue(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={nutritionalValue} onIonChange={e => setNutritionalValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -501,31 +507,31 @@ export default function TestMenu(){
                     <div>Pliegues</div>
                     <IonItem>
                       <IonLabel position="floating">Triceps</IonLabel>
-                      <IonInput value={tricepsFold} onIonChange={e => setTricepsFold(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={tricepsFold} onIonChange={e => setTricepsFold(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                     <IonItem>
                       <IonLabel position="floating">Subescapular</IonLabel>
-                      <IonInput value={subscapularFold} onIonChange={e => setSubscapularFold(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={subscapularFold} onIonChange={e => setSubscapularFold(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                     <IonItem>
                       <IonLabel position="floating">Pectoral</IonLabel>
-                      <IonInput value={pectoralFold} onIonChange={e => setPectoralFold(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={pectoralFold} onIonChange={e => setPectoralFold(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                     <IonItem>
                       <IonLabel position="floating">Medio Axilar</IonLabel>
-                      <IonInput value={axillaryFold} onIonChange={e => setAxillaryFold(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={axillaryFold} onIonChange={e => setAxillaryFold(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                     <IonItem>
                       <IonLabel position="floating">Supra Iliaco</IonLabel>
-                      <IonInput value={supraIliacFold} onIonChange={e => setSupraIliacFold(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={supraIliacFold} onIonChange={e => setSupraIliacFold(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                     <IonItem>
                       <IonLabel position="floating">Abdonimal</IonLabel>
-                      <IonInput value={abdominalFold} onIonChange={e => setAbdominalFold(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={abdominalFold} onIonChange={e => setAbdominalFold(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                     <IonItem>
                       <IonLabel position="floating">Muslo Anterior</IonLabel>
-                      <IonInput value={anteriorThighFold} onIonChange={e => setAnteriorThighFold(parseFloat(e.detail.value!))}></IonInput>
+                      <IonInput value={anteriorThighFold} onIonChange={e => setAnteriorThighFold(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
@@ -550,11 +556,20 @@ export default function TestMenu(){
                   result = ((495/density) - 450);
                   if(result && age && gender) {
                     const percentile = PercentileService.getGreasyPercentile(result, age, gender);
-                    console.log('Nutritional');
+                    console.log('Nutritional - Calculated');
                     console.log('result', result);
                     console.log('percentile - Greasy', percentile);
-                    setNutritionalValue(percentile);
+                    setNutritional(percentile);
                   }
+                }
+              }
+              if(nutritionalOption === nutritionalOptions.direct) {
+                if(nutritionalValue && age && gender) {
+                  const percentile = PercentileService.getGreasyPercentile(nutritionalValue, age, gender);
+                  console.log('Nutritional - Direct');
+                  console.log('nutritionalValue', nutritionalValue);
+                  console.log('percentile - Greasy', percentile);
+                  setNutritional(percentile);
                 }
               }
               setShowNutritionalModal(false);
