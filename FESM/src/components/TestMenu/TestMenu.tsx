@@ -113,7 +113,7 @@ export default function TestMenu(){
   let query = useQuery();
   let history = useHistory();
   let participantId = query.get("id");
-  let participantName = query.get("name") ? ' - ' + query.get("name") : '';
+  let participantName = query.get("name") ? query.get("name") : '';
 
   const [value, loading, error] = useDocument(
     firebase.firestore().doc("Participants/" + participantId),
@@ -203,70 +203,89 @@ export default function TestMenu(){
           </IonToolbar>
         </IonHeader>
         <IonContent>
-        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+        {(cardio || strengthUpper || strengthLower || resistanceABS || resistancePushUps || flexibility || nutritional) && <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton onClick={() => save()}>
             <IonIcon icon={saveOutline} />
           </IonFabButton>
-        </IonFab>
-          <div className="title">
-            Evaluacion{participantName}
+        </IonFab>}
+          <IonLabel className="title">
+            Evaluación
+          </IonLabel>
+          <IonLabel className="subtitle" color="primary">
+            {participantName}
+          </IonLabel>
+          <div className="list">
+            <IonCard className="card" onClick={() => setShowCardioModal(true)}>
+              <IonIcon className="iconClass" icon={heartSharp}></IonIcon>
+              <IonCardHeader className="card-title-container">
+                <IonCardTitle className="card-title" color="secondary">Cardiovascular</IonCardTitle>
+              </IonCardHeader>
+              <div className="results-container">
+                {cardio && <div className="result">
+                  <IonBadge color="success">{cardio}</IonBadge>
+                </div>}
+              </div>             
+            </IonCard>
+            <IonCard className="card" onClick={() => setShowStrengthModal(true)}>
+              <IonIcon className="iconClass" icon={barbellSharp}></IonIcon>
+              <IonCardHeader className="card-title-container">
+                <IonCardTitle className="card-title" color="secondary">Fuerza</IonCardTitle>
+              </IonCardHeader>
+              <div className="results-container">
+                {strengthUpper && <div className="result">
+                  <IonLabel color="primary">Superior</IonLabel>
+                  <IonBadge color="success">{strengthUpper}</IonBadge>
+                </div>}
+                {strengthLower && <div className="result">
+                  <IonLabel color="primary">Inferior</IonLabel>
+                  <IonBadge color="success">{strengthLower}</IonBadge>
+                </div>}
+              </div>
+            </IonCard>
+            <IonCard className="card" onClick={() => setShowResistanceModal(true)}>
+              <IonIcon className="iconClass" icon={bicycleSharp}></IonIcon>
+              <IonCardHeader className="card-title-container">
+                <IonCardTitle className="card-title" color="secondary">Resistencia</IonCardTitle>
+              </IonCardHeader>
+              <div className="results-container">
+                {resistanceABS && <div className="result">
+                  <IonLabel color="primary">Abs</IonLabel>
+                  <IonBadge color="success">{resistanceABS}</IonBadge>
+                </div>}
+                {resistancePushUps && <div className="result">
+                  <IonLabel color="primary">F. Pecho</IonLabel>
+                  <IonBadge color="success">{resistancePushUps}</IonBadge>
+                </div>}
+              </div>
+            </IonCard>
+            <IonCard className="card" onClick={() => setShowFlexibilityModal(true)}>
+              <IonIcon className="iconClass" icon={roseSharp}></IonIcon>
+              <IonCardHeader className="card-title-container">
+                <IonCardTitle className="card-title" color="secondary">Flexibilidad</IonCardTitle>
+              </IonCardHeader>
+              <div className="results-container">
+                {flexibility && <div className="result">
+                  <IonBadge color="success">{flexibility}</IonBadge>
+                </div>}
+              </div>
+            </IonCard>
+            <IonCard className="card" onClick={() => setShowNutritionalModal(true)}>
+              <IonIcon className="iconClass" icon={fastFoodSharp}></IonIcon>
+              <IonCardHeader className="card-title-container">
+                <IonCardTitle className="card-title" color="secondary">Estado Nutricional</IonCardTitle>
+              </IonCardHeader>
+              <div className="results-container">
+                {nutritional && <div className="result">
+                  <IonBadge color="success">{nutritional}</IonBadge>
+                </div>}
+              </div>
+            </IonCard>
           </div>
-          <IonList>
-            <IonItem onClick={() => setShowCardioModal(true)}>
-              <IonCard className="card">
-                <IonIcon className="iconClass" icon={heartSharp}></IonIcon>
-                <IonBadge color="primary">{cardio}</IonBadge>
-                <IonCardHeader>
-                  <IonCardTitle>Cardiovascular</IonCardTitle>
-                </IonCardHeader>
-              </IonCard>
-            </IonItem>
-            <IonItem onClick={() => setShowStrengthModal(true)}>
-              <IonCard className="card">
-                <IonIcon className="iconClass" icon={barbellSharp}></IonIcon>
-                <IonBadge color="primary">{strengthUpper}</IonBadge>
-                <IonBadge color="primary">{strengthLower}</IonBadge>
-                <IonCardHeader>
-                  <IonCardTitle>Fuerza</IonCardTitle>
-                </IonCardHeader>
-              </IonCard>
-            </IonItem>
-            <IonItem onClick={() => setShowResistanceModal(true)}>
-              <IonCard className="card">
-                <IonIcon className="iconClass" icon={bicycleSharp}></IonIcon>
-                <IonBadge color="primary">{resistanceABS}</IonBadge>
-                <IonBadge color="primary">{resistancePushUps}</IonBadge>
-                <IonCardHeader>
-                  <IonCardTitle>Resistencia</IonCardTitle>
-                </IonCardHeader>
-              </IonCard>
-            </IonItem>
-            <IonItem onClick={() => setShowFlexibilityModal(true)}>
-              <IonCard className="card">
-                <IonIcon className="iconClass" icon={roseSharp}></IonIcon>
-                <IonBadge color="primary">{flexibility}</IonBadge>
-                <IonCardHeader>
-                  <IonCardTitle>Flexibilidad</IonCardTitle>
-                </IonCardHeader>
-              </IonCard>
-            </IonItem>
-            <IonItem onClick={() => setShowNutritionalModal(true)}>
-              <IonCard className="card">
-                <IonIcon className="iconClass" icon={fastFoodSharp}></IonIcon>
-                <IonBadge color="primary">{nutritional}</IonBadge>
-                <IonCardHeader>
-                  <IonCardTitle>Estado Nutricional</IonCardTitle>
-                </IonCardHeader>
-              </IonCard>
-            </IonItem>
-          </IonList>
-
           <IonModal isOpen={showCardioModal}>
             <div className="modalContainer">
-              <div>
+              <IonLabel className="modal-title" color="primary">
                 FITNESS CARDIOVASCULAR
-              </div>
-
+              </IonLabel>
               <div className="tabs">  
                 <IonIcon class={cardioOption === cardioOptions.calculated ? 'tab-icon active' : 'tab-icon inactive'} icon={calculatorOutline} onClick={() => setCardioOption(cardioOptions.calculated)}/>
                 <IonIcon class={cardioOption === cardioOptions.bicycle ? 'tab-icon active' : 'tab-icon inactive'} icon={bicycleOutline} onClick={() => setCardioOption(cardioOptions.bicycle)}/>
@@ -274,31 +293,37 @@ export default function TestMenu(){
               </div>
               <div className='option-content'>
                 {cardioOption === cardioOptions.calculated && 
-                  <div>
-                    <div>Calculo directo</div>
-                    <IonItem>
+                  <div className="option">
+                    <IonLabel className="option-title" color="secondary">
+                      Cálculo directo
+                    </IonLabel>
+                    <IonItem className="option-value">
                       <IonLabel position="floating">Valor de ergoespirometria</IonLabel>
                       <IonInput value={cardioValue} onIonChange={e => setCardioValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
                 {cardioOption === cardioOptions.bicycle && 
-                  <div>
-                    <div>Calculo indirecto - Bicicleta</div>
-                    <IonItem>
+                  <div className="option">
+                    <IonLabel className="option-title" color="secondary">
+                      Cálculo indirecto - Bicicleta
+                    </IonLabel>
+                    <IonItem className="option-value">
                       <IonLabel position="floating">Vatios</IonLabel>
                       <IonInput value={cardioVatios} onIonChange={e => setCardioVatios(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
                 {cardioOption === cardioOptions.walking && 
-                  <div>
-                    <div>Calculo indirecto - Trote</div>
-                    <IonItem>
+                  <div className="option">
+                    <IonLabel className="option-title" color="secondary">
+                      Cálculo indirecto - Trote
+                    </IonLabel>
+                    <IonItem className="option-value">
                       <IonLabel position="floating">Velocidad (Millas/min)</IonLabel>
                       <IonInput value={cardioVel} onIonChange={e => setCardioVel(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
-                    <IonItem>
+                    <IonItem className="option-value">
                       <IonLabel position="floating">Inclinacion (%)</IonLabel>
                       <IonInput value={cardioTrend} onIonChange={e => setCardioTrend(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
@@ -333,16 +358,16 @@ export default function TestMenu(){
                 setShowCardioModal(false);
                 }
               }>
-                  SAVE AND CLOSE
+              Volver
               </IonButton>
             </div>
             
           </IonModal>
           <IonModal isOpen={showStrengthModal}>
             <div className="modalContainer">
-              <div>
+              <IonLabel className="modal-title" color="primary">
                 FITNESS FUERZA
-              </div>
+              </IonLabel>
 
               <div className="tabs">  
                 <IonIcon class={strengthOption === strengthOptions.upper ? 'tab-icon active' : 'tab-icon inactive'} icon={trendingUpOutline} onClick={() => setStrengthOption(strengthOptions.upper)}/>
@@ -350,61 +375,65 @@ export default function TestMenu(){
               </div>
               <div className='option-content'>
                 {strengthOption === strengthOptions.upper && 
-                  <div>
-                    <div>Tronco Superior</div>
-                    <IonItem>
+                  <div className="option">
+                    <IonLabel className="option-title" color="secondary">
+                      Tronco Superior
+                    </IonLabel>
+                    <IonItem className="option-value">
                       <IonLabel position="floating">Peso (Kg)</IonLabel>
                       <IonInput value={strengthUpperValue} onIonChange={e => setStrengthUpperValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
                 {strengthOption === strengthOptions.lower && 
-                  <div>
-                    <div>Tronco Inferior</div>
-                    <IonItem>
+                  <div  className="option">
+                    <IonLabel className="option-title" color="secondary">
+                      Tronco Inferior
+                    </IonLabel>
+                    <IonItem className="option-value">
                       <IonLabel position="floating">Peso (Kg)</IonLabel>
                       <IonInput value={strengthLowerValue} onIonChange={e => setStrengthLowerValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
               </div>
+              <IonButton onClick={() => {
+                let result: number = 0;
+                if (strengthUpperValue && weight && weight > 0) {
+                  result = strengthUpperValue / weight;
+
+                  if(age && gender) {
+                    const percentile = PercentileService.getChestPressPercentile(result, age, gender);
+                    console.log('Upper Strength');
+                    console.log('result', result);
+                    console.log('percentile - ChestPress', percentile);
+                    setStrengthUpper(percentile);
+                  }
+                }
+
+                if (strengthLowerValue && weight && weight > 0) {
+                  result = strengthLowerValue / weight;
+
+                  if(age && gender) {
+                    const percentile = PercentileService.getLegPressPercentile(result, age, gender);
+                    console.log('Lower Strength');
+                    console.log('result', result);
+                    console.log('percentile - LegPress', percentile);
+                    setStrengthLower(percentile);
+                  }
+                }
+                
+                setShowStrengthModal(false);
+                }}>
+                Volver
+              </IonButton>
             </div>
-            <IonButton onClick={() => {
-              let result: number = 0;
-              if (strengthUpperValue && weight && weight > 0) {
-                result = strengthUpperValue / weight;
-
-                if(age && gender) {
-                  const percentile = PercentileService.getChestPressPercentile(result, age, gender);
-                  console.log('Upper Strength');
-                  console.log('result', result);
-                  console.log('percentile - ChestPress', percentile);
-                  setStrengthUpper(percentile);
-                }
-              }
-
-              if (strengthLowerValue && weight && weight > 0) {
-                result = strengthLowerValue / weight;
-
-                if(age && gender) {
-                  const percentile = PercentileService.getLegPressPercentile(result, age, gender);
-                  console.log('Lower Strength');
-                  console.log('result', result);
-                  console.log('percentile - LegPress', percentile);
-                  setStrengthLower(percentile);
-                }
-              }
-              
-              setShowStrengthModal(false);
-            }}>
-                Close Fuerza Modal
-            </IonButton>
           </IonModal>
           <IonModal isOpen={showResistanceModal}>
             <div className="modalContainer">
-              <div>
+              <IonLabel className="modal-title" color="primary">
                 FITNESS RESISTENCIA
-              </div>
+              </IonLabel>
 
               <div className="tabs">  
                 <IonIcon class={resistanceOption === resistanceOptions.abs ? 'tab-icon active' : 'tab-icon inactive'} icon={trendingUpOutline} onClick={() => setResistanceOption(resistanceOptions.abs)}/>
@@ -412,170 +441,180 @@ export default function TestMenu(){
               </div>
               <div className='option-content'>
                 {resistanceOption === resistanceOptions.abs && 
-                  <div>
-                    <div>Abdominales</div>
-                    <IonItem>
+                  <div className="option">
+                    <IonLabel className="option-title" color="secondary">
+                      Abdominales
+                    </IonLabel>
+                    <IonItem className="option-value">
                       <IonLabel position="floating"># abdominales (1 m)</IonLabel>
                       <IonInput value={resistanceABSValue} onIonChange={e => setResistanceABSValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
                 {resistanceOption === resistanceOptions.pushUps && 
-                  <div>
-                    <div>Flexiones de pecho</div>
-                    <IonItem>
+                  <div className="option">
+                    <IonLabel className="option-title" color="secondary">
+                      Flexiones de pecho
+                    </IonLabel>
+                    <IonItem className="option-value">
                       <IonLabel position="floating"># flexiones de pecho (1 m)</IonLabel>
                       <IonInput value={resistancePushUpsValue} onIonChange={e => setResistancePushUpsValue(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
                 }
               </div>
+              <IonButton onClick={() => {
+                if(resistanceABSValue && age && gender) {
+                  const percentile = PercentileService.getAbsPercentile(resistanceABSValue, age, gender);
+                  console.log('ABS');
+                  console.log('resistanceABSValue', resistanceABSValue);
+                  console.log('percentile - Abs', percentile);
+                  setResistanceABS(percentile);
+                }
+
+                if(resistancePushUpsValue && age && gender) {
+                  const percentile = PercentileService.getPushUpsPercentile(resistancePushUpsValue, age, gender);
+                  console.log('PushUps');
+                  console.log('resistancePushUpsValue', resistancePushUpsValue);
+                  console.log('percentile - Push Ups', percentile);
+                  setResistancePushUps(percentile);
+                }
+
+                setShowResistanceModal(false);
+              }}>
+                Volver
+              </IonButton>
             </div>
-            <IonButton onClick={() => {
-              if(resistanceABSValue && age && gender) {
-                const percentile = PercentileService.getAbsPercentile(resistanceABSValue, age, gender);
-                console.log('ABS');
-                console.log('resistanceABSValue', resistanceABSValue);
-                console.log('percentile - Abs', percentile);
-                setResistanceABS(percentile);
-              }
-
-              if(resistancePushUpsValue && age && gender) {
-                const percentile = PercentileService.getPushUpsPercentile(resistancePushUpsValue, age, gender);
-                console.log('PushUps');
-                console.log('resistancePushUpsValue', resistancePushUpsValue);
-                console.log('percentile - Push Ups', percentile);
-                setResistancePushUps(percentile);
-              }
-
-              setShowResistanceModal(false);
-            }}>
-                Close Resistencia Modal
-            </IonButton>
           </IonModal>
           <IonModal isOpen={showFlexibilityModal}>
             <div className="modalContainer">
-              <div>
+              <IonLabel className="modal-title" color="primary">
                 FITNESS FLEXIBILIDAD
-              </div>
+              </IonLabel>
               <div className='option-content'>
-                <div>
-                  <div>Flexibilidad</div>
-                  <IonItem>
+                <div className="option">
+                  <IonLabel className="option-title" color="secondary">
+                    Flexibilidad
+                  </IonLabel>
+                  <IonItem className="option-value">
                     <IonLabel position="floating">distancia (cm)</IonLabel>
                     <IonInput value={flexibilityValue} onIonChange={e => setFlexibilityValue(safeParseFloat(e.detail.value!))}></IonInput>
                   </IonItem>
                 </div>
               </div>
-            </div>
-            <IonButton onClick={() => {
-              if(flexibilityValue && age && gender) {
-                const percentile = PercentileService.getSitNReachPercentile(flexibilityValue, age, gender);
-                console.log('Sit N Reach');
-                console.log('flexibilityValue', flexibilityValue);
-                console.log('percentile - Flexibility', percentile);
-                setFlexibility(percentile);
-              }
+              <IonButton onClick={() => {
+                if(flexibilityValue && age && gender) {
+                  const percentile = PercentileService.getSitNReachPercentile(flexibilityValue, age, gender);
+                  console.log('Sit N Reach');
+                  console.log('flexibilityValue', flexibilityValue);
+                  console.log('percentile - Flexibility', percentile);
+                  setFlexibility(percentile);
+                }
 
-              setShowFlexibilityModal(false);
-            }}>
-                Close Flexibilidad Modal
-            </IonButton>
+                setShowFlexibilityModal(false);
+              }}>
+                Volver
+              </IonButton>
+          </div>
+            
           </IonModal>
           <IonModal isOpen={showNutritionalModal}>
           <div className="modalContainer">
-              <div>
-                FITNESS NUTRICIONAL
-              </div>
+            <IonLabel className="modal-title" color="primary">
+              FITNESS NUTRICIONAL
+            </IonLabel>
 
-              <div className="tabs">  
-                <IonIcon class={nutritionalOption === nutritionalOptions.direct ? 'tab-icon active' : 'tab-icon inactive'} icon={calculatorOutline} onClick={() => setNutritionalOption(nutritionalOptions.direct)}/>
-                <IonIcon class={nutritionalOption === nutritionalOptions.folds ? 'tab-icon active' : 'tab-icon inactive'} icon={eyedropOutline} onClick={() => setNutritionalOption(nutritionalOptions.folds)}/>
-              </div>
-              <div className='option-content'>
-                {nutritionalOption === nutritionalOptions.direct && 
-                  <div>
-                    <div>Calculo directo</div>
-                    <IonItem>
-                      <IonLabel position="floating">% graso</IonLabel>
-                      <IonInput value={nutritionalValue} onIonChange={e => setNutritionalValue(safeParseFloat(e.detail.value!))}></IonInput>
-                    </IonItem>
-                  </div>
-                }
-                {nutritionalOption === nutritionalOptions.folds && 
-                  <div>
-                    <div>Pliegues</div>
-                    <IonItem>
-                      <IonLabel position="floating">Triceps</IonLabel>
-                      <IonInput value={tricepsFold} onIonChange={e => setTricepsFold(safeParseFloat(e.detail.value!))}></IonInput>
-                    </IonItem>
-                    <IonItem>
-                      <IonLabel position="floating">Subescapular</IonLabel>
-                      <IonInput value={subscapularFold} onIonChange={e => setSubscapularFold(safeParseFloat(e.detail.value!))}></IonInput>
-                    </IonItem>
-                    <IonItem>
-                      <IonLabel position="floating">Pectoral</IonLabel>
-                      <IonInput value={pectoralFold} onIonChange={e => setPectoralFold(safeParseFloat(e.detail.value!))}></IonInput>
-                    </IonItem>
-                    <IonItem>
-                      <IonLabel position="floating">Medio Axilar</IonLabel>
-                      <IonInput value={axillaryFold} onIonChange={e => setAxillaryFold(safeParseFloat(e.detail.value!))}></IonInput>
-                    </IonItem>
-                    <IonItem>
-                      <IonLabel position="floating">Supra Iliaco</IonLabel>
-                      <IonInput value={supraIliacFold} onIonChange={e => setSupraIliacFold(safeParseFloat(e.detail.value!))}></IonInput>
-                    </IonItem>
-                    <IonItem>
-                      <IonLabel position="floating">Abdonimal</IonLabel>
-                      <IonInput value={abdominalFold} onIonChange={e => setAbdominalFold(safeParseFloat(e.detail.value!))}></IonInput>
-                    </IonItem>
-                    <IonItem>
-                      <IonLabel position="floating">Muslo Anterior</IonLabel>
-                      <IonInput value={anteriorThighFold} onIonChange={e => setAnteriorThighFold(safeParseFloat(e.detail.value!))}></IonInput>
-                    </IonItem>
-                  </div>
-                }
-              </div>
+            <div className="tabs">  
+              <IonIcon class={nutritionalOption === nutritionalOptions.direct ? 'tab-icon active' : 'tab-icon inactive'} icon={calculatorOutline} onClick={() => setNutritionalOption(nutritionalOptions.direct)}/>
+              <IonIcon class={nutritionalOption === nutritionalOptions.folds ? 'tab-icon active' : 'tab-icon inactive'} icon={eyedropOutline} onClick={() => setNutritionalOption(nutritionalOptions.folds)}/>
             </div>
-            <IonButton onClick={() => {
-              if(nutritionalOption === nutritionalOptions.folds){
-                if(tricepsFold && subscapularFold && pectoralFold && axillaryFold && supraIliacFold && abdominalFold && anteriorThighFold) {
-                  let result: number = 0;
-                  const sumatoria = tricepsFold + subscapularFold + pectoralFold + axillaryFold + supraIliacFold + abdominalFold + anteriorThighFold;
-                  let density;
+            <div className='option-content'>
+              {nutritionalOption === nutritionalOptions.direct && 
+                <div className="option">
+                  <IonLabel className="option-title" color="secondary">
+                    Cálculo directo
+                  </IonLabel>
+                  <IonItem className="option-value">
+                    <IonLabel position="floating">% graso</IonLabel>
+                    <IonInput value={nutritionalValue} onIonChange={e => setNutritionalValue(safeParseFloat(e.detail.value!))}></IonInput>
+                  </IonItem>
+                </div>
+              }
+              {nutritionalOption === nutritionalOptions.folds && 
+                <div className="option">
+                  <IonLabel className="option-title" color="secondary">
+                    Pliegues
+                  </IonLabel>
+                  <IonItem className="option-pliegue-value">
+                    <IonLabel position="floating">Triceps</IonLabel>
+                    <IonInput value={tricepsFold} onIonChange={e => setTricepsFold(safeParseFloat(e.detail.value!))}></IonInput>
+                  </IonItem>
+                  <IonItem className="option-pliegue-value">
+                    <IonLabel position="floating">Subescapular</IonLabel>
+                    <IonInput value={subscapularFold} onIonChange={e => setSubscapularFold(safeParseFloat(e.detail.value!))}></IonInput>
+                  </IonItem>
+                  <IonItem className="option-pliegue-value">
+                    <IonLabel position="floating">Pectoral</IonLabel>
+                    <IonInput value={pectoralFold} onIonChange={e => setPectoralFold(safeParseFloat(e.detail.value!))}></IonInput>
+                  </IonItem>
+                  <IonItem className="option-pliegue-value">
+                    <IonLabel position="floating">Medio Axilar</IonLabel>
+                    <IonInput value={axillaryFold} onIonChange={e => setAxillaryFold(safeParseFloat(e.detail.value!))}></IonInput>
+                  </IonItem>
+                  <IonItem className="option-pliegue-value">
+                    <IonLabel position="floating">Supra Iliaco</IonLabel>
+                    <IonInput value={supraIliacFold} onIonChange={e => setSupraIliacFold(safeParseFloat(e.detail.value!))}></IonInput>
+                  </IonItem>
+                  <IonItem className="option-pliegue-value">
+                    <IonLabel position="floating">Abdonimal</IonLabel>
+                    <IonInput value={abdominalFold} onIonChange={e => setAbdominalFold(safeParseFloat(e.detail.value!))}></IonInput>
+                  </IonItem>
+                  <IonItem className="option-pliegue-value">
+                    <IonLabel position="floating">Muslo Anterior</IonLabel>
+                    <IonInput value={anteriorThighFold} onIonChange={e => setAnteriorThighFold(safeParseFloat(e.detail.value!))}></IonInput>
+                  </IonItem>
+                </div>}
+              </div>
+              <IonButton onClick={() => {
+                if(nutritionalOption === nutritionalOptions.folds){
+                  if(tricepsFold && subscapularFold && pectoralFold && axillaryFold && supraIliacFold && abdominalFold && anteriorThighFold) {
+                    let result: number = 0;
+                    const sumatoria = tricepsFold + subscapularFold + pectoralFold + axillaryFold + supraIliacFold + abdominalFold + anteriorThighFold;
+                    let density;
 
-                  if(!age)
-                    return;
+                    if(!age)
+                      return;
 
-                  if(gender === 'female' ) {
-                    density = (1.097 - (0.00046971 * sumatoria) + (0.00000056 * sumatoria * sumatoria) - (0.00012828 * age));
-                  } else {
-                    density = (1.112 - (0.00043499 * sumatoria) + (0.00000055 * sumatoria * sumatoria) - (0.00028826 * age));
+                    if(gender === 'female' ) {
+                      density = (1.097 - (0.00046971 * sumatoria) + (0.00000056 * sumatoria * sumatoria) - (0.00012828 * age));
+                    } else {
+                      density = (1.112 - (0.00043499 * sumatoria) + (0.00000055 * sumatoria * sumatoria) - (0.00028826 * age));
+                    }
+
+                    result = ((495/density) - 450);
+                    if(result && age && gender) {
+                      const percentile = PercentileService.getGreasyPercentile(result, age, gender);
+                      console.log('Nutritional - Calculated');
+                      console.log('result', result);
+                      console.log('percentile - Greasy', percentile);
+                      setNutritional(percentile);
+                    }
                   }
-
-                  result = ((495/density) - 450);
-                  if(result && age && gender) {
-                    const percentile = PercentileService.getGreasyPercentile(result, age, gender);
-                    console.log('Nutritional - Calculated');
-                    console.log('result', result);
+                }
+                if(nutritionalOption === nutritionalOptions.direct) {
+                  if(nutritionalValue && age && gender) {
+                    const percentile = PercentileService.getGreasyPercentile(nutritionalValue, age, gender);
+                    console.log('Nutritional - Direct');
+                    console.log('nutritionalValue', nutritionalValue);
                     console.log('percentile - Greasy', percentile);
                     setNutritional(percentile);
                   }
                 }
-              }
-              if(nutritionalOption === nutritionalOptions.direct) {
-                if(nutritionalValue && age && gender) {
-                  const percentile = PercentileService.getGreasyPercentile(nutritionalValue, age, gender);
-                  console.log('Nutritional - Direct');
-                  console.log('nutritionalValue', nutritionalValue);
-                  console.log('percentile - Greasy', percentile);
-                  setNutritional(percentile);
-                }
-              }
-              setShowNutritionalModal(false);
-            }}>
-                Close Nutricion Modal
-            </IonButton>
+                setShowNutritionalModal(false);
+              }}>
+                Volver
+              </IonButton>
+            </div>
           </IonModal>
         </IonContent>
       </IonPage>

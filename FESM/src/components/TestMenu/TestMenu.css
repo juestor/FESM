@@ -4,7 +4,16 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin: 20px 0 10px 0;
+}
+
+.subtitle{
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 0 0 10px;
+  font-weight: bold;
 }
 
 .card {
@@ -12,7 +21,42 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 40%;
+  height: 220px;
+}
+
+.card-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 18px;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+
+.list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .iconClass {
@@ -22,6 +66,41 @@
 .modalContainer {
   display: flex;
   flex-direction: column;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-title {
+  display: flex;
+  margin: 20px 20px 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.option-value {
+  display: flex;
+  margin: 0 20px 10px 20px;
+  font-size: 20px;
+  width: 80%;
+}
+
+.option-pliegue-value {
+  display: flex;
+  margin: 0 10px 0 10px;
+  font-size: 20px;
+  width: 80%;
 }
 
 .tabs {
