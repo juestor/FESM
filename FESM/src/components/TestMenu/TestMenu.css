@@ -51,6 +51,14 @@
   width: 40%;
 }
 
+.result-data{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+}
+
 .list {
   display: flex;
   width: 100%;

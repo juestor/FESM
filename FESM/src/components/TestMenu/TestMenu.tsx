@@ -218,7 +218,10 @@ export default function TestMenu(){
               </IonCardHeader>
               <div className="results-container">
                 {cardio && <div className="result">
-                  <IonBadge color="success">{cardio}</IonBadge>
+                  <div className="result-data">
+                    <IonBadge color="secondary">{cardioValue}</IonBadge>
+                    <IonBadge color="success">{cardio}</IonBadge>
+                  </div>
                 </div>}
               </div>             
             </IonCard>
@@ -230,11 +233,17 @@ export default function TestMenu(){
               <div className="results-container">
                 {strengthUpper && <div className="result">
                   <IonLabel color="primary">Superior</IonLabel>
-                  <IonBadge color="success">{strengthUpper}</IonBadge>
+                  <div className="result-data">
+                    <IonBadge color="secondary">{strengthUpperValue}</IonBadge>
+                    <IonBadge color="success">{strengthUpper}</IonBadge>
+                  </div>
                 </div>}
                 {strengthLower && <div className="result">
                   <IonLabel color="primary">Inferior</IonLabel>
-                  <IonBadge color="success">{strengthLower}</IonBadge>
+                  <div className="result-data">
+                    <IonBadge color="secondary">{strengthLowerValue}</IonBadge>
+                    <IonBadge color="success">{strengthLower}</IonBadge>
+                  </div>
                 </div>}
               </div>
             </IonCard>
@@ -246,11 +255,17 @@ export default function TestMenu(){
               <div className="results-container">
                 {resistanceABS && <div className="result">
                   <IonLabel color="primary">Abs</IonLabel>
-                  <IonBadge color="success">{resistanceABS}</IonBadge>
+                  <div className="result-data">
+                    <IonBadge color="secondary">{resistanceABSValue}</IonBadge>
+                    <IonBadge color="success">{resistanceABS}</IonBadge>
+                  </div>
                 </div>}
                 {resistancePushUps && <div className="result">
                   <IonLabel color="primary">F. Pecho</IonLabel>
-                  <IonBadge color="success">{resistancePushUps}</IonBadge>
+                  <div className="result-data">
+                    <IonBadge color="secondary">{resistancePushUpsValue}</IonBadge>
+                    <IonBadge color="success">{resistancePushUps}</IonBadge>
+                  </div>
                 </div>}
               </div>
             </IonCard>
@@ -261,7 +276,10 @@ export default function TestMenu(){
               </IonCardHeader>
               <div className="results-container">
                 {flexibility && <div className="result">
-                  <IonBadge color="success">{flexibility}</IonBadge>
+                  <div className="result-data">
+                    <IonBadge color="secondary">{flexibilityValue}</IonBadge>
+                    <IonBadge color="success">{flexibility}</IonBadge>
+                  </div>
                 </div>}
               </div>
             </IonCard>
@@ -272,7 +290,10 @@ export default function TestMenu(){
               </IonCardHeader>
               <div className="results-container">
                 {nutritional && <div className="result">
-                  <IonBadge color="success">{nutritional}</IonBadge>
+                  <div className="result-data">
+                    <IonBadge color="secondary">{nutritionalValue}</IonBadge>
+                    <IonBadge color="success">{nutritional}</IonBadge>
+                  </div>
                 </div>}
               </div>
             </IonCard>
