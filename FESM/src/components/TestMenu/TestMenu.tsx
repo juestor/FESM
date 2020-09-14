@@ -11,7 +11,6 @@ import {
   IonCard,
   IonCardHeader,
   IonCardTitle,
-  IonList,
   IonItem,
   IonIcon,
   IonModal,
@@ -26,15 +25,12 @@ import {
   heartSharp,
   barbellSharp,
   bicycleSharp,
-  roseSharp,
   fastFoodSharp,
   bicycleOutline,
   walkOutline,
   calculatorOutline,
-  trendingUpOutline,
-  trendingDownOutline,
   eyedropOutline,
-  saveOutline
+  saveOutline, body, barbell, handLeft, football, grid
 } from 'ionicons/icons';
 
 import './TestMenu.css';
@@ -216,7 +212,7 @@ export default function TestMenu(){
           </IonLabel>
           <div className="list">
             <IonCard className="card" onClick={() => setShowCardioModal(true)}>
-              <IonIcon className="iconClass" icon={heartSharp}></IonIcon>
+              <IonIcon className="testIconClass" icon={heartSharp}></IonIcon>
               <IonCardHeader className="card-title-container">
                 <IonCardTitle className="card-title" color="secondary">Cardiovascular</IonCardTitle>
               </IonCardHeader>
@@ -227,7 +223,7 @@ export default function TestMenu(){
               </div>             
             </IonCard>
             <IonCard className="card" onClick={() => setShowStrengthModal(true)}>
-              <IonIcon className="iconClass" icon={barbellSharp}></IonIcon>
+              <IonIcon className="testIconClass" icon={barbellSharp}></IonIcon>
               <IonCardHeader className="card-title-container">
                 <IonCardTitle className="card-title" color="secondary">Fuerza</IonCardTitle>
               </IonCardHeader>
@@ -243,7 +239,7 @@ export default function TestMenu(){
               </div>
             </IonCard>
             <IonCard className="card" onClick={() => setShowResistanceModal(true)}>
-              <IonIcon className="iconClass" icon={bicycleSharp}></IonIcon>
+              <IonIcon className="testIconClass" icon={bicycleSharp}></IonIcon>
               <IonCardHeader className="card-title-container">
                 <IonCardTitle className="card-title" color="secondary">Resistencia</IonCardTitle>
               </IonCardHeader>
@@ -259,7 +255,7 @@ export default function TestMenu(){
               </div>
             </IonCard>
             <IonCard className="card" onClick={() => setShowFlexibilityModal(true)}>
-              <IonIcon className="iconClass" icon={roseSharp}></IonIcon>
+              <IonIcon className="testIconClass" icon={body}></IonIcon>
               <IonCardHeader className="card-title-container">
                 <IonCardTitle className="card-title" color="secondary">Flexibilidad</IonCardTitle>
               </IonCardHeader>
@@ -270,7 +266,7 @@ export default function TestMenu(){
               </div>
             </IonCard>
             <IonCard className="card" onClick={() => setShowNutritionalModal(true)}>
-              <IonIcon className="iconClass" icon={fastFoodSharp}></IonIcon>
+              <IonIcon className="testIconClass" icon={fastFoodSharp}></IonIcon>
               <IonCardHeader className="card-title-container">
                 <IonCardTitle className="card-title" color="secondary">Estado Nutricional</IonCardTitle>
               </IonCardHeader>
@@ -370,8 +366,8 @@ export default function TestMenu(){
               </IonLabel>
 
               <div className="tabs">  
-                <IonIcon class={strengthOption === strengthOptions.upper ? 'tab-icon active' : 'tab-icon inactive'} icon={trendingUpOutline} onClick={() => setStrengthOption(strengthOptions.upper)}/>
-                <IonIcon class={strengthOption === strengthOptions.lower ? 'tab-icon active' : 'tab-icon inactive'} icon={trendingDownOutline} onClick={() => setStrengthOption(strengthOptions.lower)}/>
+                <IonIcon class={strengthOption === strengthOptions.upper ? 'tab-icon active' : 'tab-icon inactive'} icon={barbell} onClick={() => setStrengthOption(strengthOptions.upper)}/>
+                <IonIcon class={strengthOption === strengthOptions.lower ? 'tab-icon active' : 'tab-icon inactive'} icon={football} onClick={() => setStrengthOption(strengthOptions.lower)}/>
               </div>
               <div className='option-content'>
                 {strengthOption === strengthOptions.upper && 
@@ -436,8 +432,8 @@ export default function TestMenu(){
               </IonLabel>
 
               <div className="tabs">  
-                <IonIcon class={resistanceOption === resistanceOptions.abs ? 'tab-icon active' : 'tab-icon inactive'} icon={trendingUpOutline} onClick={() => setResistanceOption(resistanceOptions.abs)}/>
-                <IonIcon class={resistanceOption === resistanceOptions.pushUps ? 'tab-icon active' : 'tab-icon inactive'} icon={trendingDownOutline} onClick={() => setResistanceOption(resistanceOptions.pushUps)}/>
+                <IonIcon class={resistanceOption === resistanceOptions.abs ? 'tab-icon active' : 'tab-icon inactive'} icon={grid} onClick={() => setResistanceOption(resistanceOptions.abs)}/>
+                <IonIcon class={resistanceOption === resistanceOptions.pushUps ? 'tab-icon active' : 'tab-icon inactive'} icon={handLeft} onClick={() => setResistanceOption(resistanceOptions.pushUps)}/>
               </div>
               <div className='option-content'>
                 {resistanceOption === resistanceOptions.abs && 

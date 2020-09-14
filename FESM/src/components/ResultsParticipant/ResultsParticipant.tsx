@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useLocation  } from "react-router-dom";
+import { useLocation  } from "react-router-dom";
 import firebase from 'firebase';
 import {
   IonContent,
@@ -11,11 +11,12 @@ import {
   IonMenuButton,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol, IonLabel, IonIcon
 } from '@ionic/react';
 import { Radar } from 'react-chartjs-2';
 
 import './ResultsParticipant.css';
+import { barbell, body, fastFoodSharp, football, grid, handLeft, heartSharp } from 'ionicons/icons';
 
 export default function ResultsParticipant(){
   const [evaluations, setEvaluations] = useState<any>();
@@ -28,10 +29,50 @@ export default function ResultsParticipant(){
   }
 
   let query = useQuery();
-  let history = useHistory();
   let participantId = query.get("id");
-  let participantName = query.get("name") ? ' - ' + query.get("name") : '';
-  let dataChart: { labels: string[]; datasets: any[]; };
+  let participantName = query.get("name") ? query.get("name") : '';
+
+  let months = new Array(12);
+  months[0] = "Enero";
+  months[1] = "Febrero";
+  months[2] = "Marzo";
+  months[3] = "Abril";
+  months[4] = "Mayo";
+  months[5] = "Junio";
+  months[6] = "Julio";
+  months[7] = "Agosto";
+  months[8] = "Septiembre";
+  months[9] = "Octubre";
+  months[10] = "Noviembre";
+  months[11] = "Diciembre";
+
+  const radarOptions = {
+    legend: {
+      position: 'top'
+    },
+    title: {
+      display: true,
+      text: 'Percentil del Fitness'
+    },
+    scale: {
+      ticks: {
+        beginAtZero: true
+      }
+    }
+  };
+
+  const color =  [
+    'rgba(128,255,0,0.3)', // verde
+    'rgba(51,255,255,0.3)', // azul claro
+    'rgba(255,51,255,0.3)', // lila
+    'rgba(255,153,51,0.3)', // naranja
+    'rgba(251,51,51,0.3)', // rojo
+    'rgba(178,102,255,0.3)', // morado
+    'rgba(153,76,0,0.3)', // cafe
+    'rgba(255,255,0,0.3)', // amarillo
+    'rgba(0,153,76,0.3)', // verde
+    'rgba(0,0,255,0.3)' // azul
+  ]
 
   const getEvaluationList = (participantId: string) => {
     return firebase.firestore().collection("Evaluations")
@@ -60,13 +101,13 @@ export default function ResultsParticipant(){
             if (evaluationList) {
               setEvaluations(evaluationList);              
               setEvaluationLabels([
-                'Cardiovascular',
-                'Fuerza M. Superior',
-                'Fuerza M. Inferior',
-                'Resistencia ABS',
-                'Resistencia Flexiones',
+                'Cardio',
+                'Fuerza MS',
+                'Fuerza MI',
+                'Abdominales',
+                'Flexiones',
                 'Flexibilidad',
-                'Estado Nutricional'
+                '% grasa'
               ]);
             }
           }
@@ -76,7 +117,7 @@ export default function ResultsParticipant(){
     if (evaluations && !evaluationValues && !chartData) {
       const currentEvaluationsValues: any[] = evaluations.map((evaluation: any) => {
         return {
-          date: new Date(evaluation.lastModifiedOn),
+          date: getStringDate(evaluation.lastModifiedOn),
           values: [
             evaluation.cardio as number,
             evaluation.strengthUpper as number,
@@ -93,10 +134,20 @@ export default function ResultsParticipant(){
     }
 
     if (evaluationValues && !chartData) {
-      const dataset: any[] = evaluationValues.map((evaluationValue) => {
+      const dataset: any[] = evaluationValues.map((evaluationValue, index) => {
+        console.log('mod', index % 10);
+        console.log('evaluationValue.values', evaluationValue.values);
         return {
           label: evaluationValue.date,
-          data:evaluationValue.values
+          data: evaluationValue.values,
+          backgroundColor: color[index % 10],
+          borderColor: color[index % 10],
+          pointRadius: 1,
+          pointBackgroundColor: ['rgba(0,0,0,1)'],
+          pointBorderColor: ['rgba(0,0,0,1)'],
+          pointHoverBackgroundColor: ['rgba(0,0,0,1)'],
+          pointHoverBorderColor: ['rgba(0,0,0,1)']
+
         };
       });
       setChartData({
@@ -105,6 +156,11 @@ export default function ResultsParticipant(){
       });
     }   
   }, [evaluations, participantId, chartData, evaluationValues, evaluationLabels]);
+
+  const getStringDate = (date: any): string => {
+    let result = new Date(date);
+    return `${months[result.getMonth() - 1]} ${result.getUTCDay()} del ${result.getFullYear()}`
+  }
 
   return (
     <>
@@ -118,30 +174,49 @@ export default function ResultsParticipant(){
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <div className="title">Resultados{participantName}</div>
+          <IonLabel className="title">
+            Resultados
+          </IonLabel>
+          <IonLabel className="subtitle" color="primary">
+            {participantName}
+          </IonLabel>
           <IonGrid>
             <IonRow>
-              <IonCol>Fecha</IonCol>
-              <IonCol>value 1</IonCol>
-              <IonCol>Value 2</IonCol>
-              <IonCol>Value 3</IonCol>
-              <IonCol>Value 4</IonCol>
-              <IonCol>Value 5</IonCol>
-              <IonCol>Value 6</IonCol>
-              <IonCol>Value 7</IonCol>
+              <IonCol className="firstColumnClass">Serie</IonCol>
+              <IonCol className="columnClass">
+                <IonIcon className="iconClass" icon={heartSharp}></IonIcon>
+              </IonCol>
+              <IonCol className="columnClass">
+                <IonIcon className="iconClass" icon={barbell}></IonIcon>
+              </IonCol>
+              <IonCol className="columnClass">
+                <IonIcon className="iconClass" icon={football}></IonIcon>
+              </IonCol>
+              <IonCol className="columnClass">
+                <IonIcon className="iconClass" icon={grid}></IonIcon>
+              </IonCol>
+              <IonCol className="columnClass">
+                <IonIcon className="iconClass" icon={handLeft}></IonIcon>
+              </IonCol>
+              <IonCol className="columnClass">
+                <IonIcon className="iconClass" icon={body}></IonIcon>
+              </IonCol>
+              <IonCol className="columnClass">
+                <IonIcon className="iconClass" icon={fastFoodSharp}></IonIcon>
+              </IonCol>
             </IonRow>
             {evaluations && evaluations.map((doc: any) => {
               const result = doc;
               return (
                 <IonRow key = {doc.id} >
-                  <IonCol>{result.lastModifiedOn}</IonCol>
-                  <IonCol>{result.cardio}</IonCol>
-                  <IonCol>{result.flexibility}</IonCol>
-                  <IonCol>{result.nutritional}</IonCol>
-                  <IonCol>{result.resistanceABS}</IonCol>
-                  <IonCol>{result.resistancePushUps}</IonCol>
-                  <IonCol>{result.strengthLower}</IonCol>
-                  <IonCol>{result.strengthUpper}</IonCol>
+                  <IonCol className="firstColumnClass">{getStringDate(result.lastModifiedOn)}</IonCol>
+                  <IonCol className="columnClass">{result.cardio}</IonCol>
+                  <IonCol className="columnClass">{result.strengthUpper}</IonCol>
+                  <IonCol className="columnClass">{result.strengthLower}</IonCol>
+                  <IonCol className="columnClass">{result.resistanceABS}</IonCol>
+                  <IonCol className="columnClass">{result.resistancePushUps}</IonCol>
+                  <IonCol className="columnClass">{result.flexibility}</IonCol>
+                  <IonCol className="columnClass">{result.nutritional}</IonCol>
                 </IonRow>
               );
             })}
@@ -149,7 +224,7 @@ export default function ResultsParticipant(){
 
           <div>
             {chartData && (
-              <Radar data={chartData}></Radar>
+              <Radar data={chartData} options={radarOptions} width={80} height={80}></Radar>
             )}
           </div>
         </IonContent>

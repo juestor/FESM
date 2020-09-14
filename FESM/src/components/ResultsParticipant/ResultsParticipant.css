@@ -1,0 +1,37 @@
+.title {
+  font-size: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 10px 0;
+}
+
+.subtitle{
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 0 0 10px;
+  font-weight: bold;
+}
+
+.iconClass{
+  font-size: 20px;
+}
+
+.firstColumnClass{
+  width: 50px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px black solid
+}
+
+.columnClass {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px black solid
+}
