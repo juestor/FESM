@@ -369,6 +369,7 @@ export default function TestMenu(){
                   console.log('CARDIO');
                   console.log('result', result);
                   console.log('percentile - V02', percentile);
+                  setCardioValue(Number((result).toFixed(1)));
                   setCardio(percentile);
                 }
 
@@ -614,6 +615,7 @@ export default function TestMenu(){
                       console.log('Nutritional - Calculated');
                       console.log('result', result);
                       console.log('percentile - Greasy', percentile);
+                      setNutritionalValue(Number((result).toFixed(1)));
                       setNutritional(percentile);
                     }
                   }
