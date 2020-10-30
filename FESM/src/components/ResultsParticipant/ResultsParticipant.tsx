@@ -160,7 +160,7 @@ export default function ResultsParticipant(){
 
   const getStringDate = (date: any): string => {
     let result = new Date(date);
-    return `${months[result.getMonth() - 1]} ${result.getUTCDay()} del ${result.getFullYear()}`
+    return `${months[result.getMonth()]} ${result.getDate()} del ${result.getFullYear()}`
   }
 
   return (

@@ -28,7 +28,7 @@ export default function MyParticipant({results, doEvaluation, doEdit, doDelete, 
   months[10] = "Noviembre";
   months[11] = "Diciembre";
 
-  const fecha: string = `${weekdays[date.getDay()]} ${date.getUTCDay()} de ${months[date.getMonth() - 1]} del ${date.getFullYear()}`;
+  const fecha: string = `${weekdays[date.getDay()]} ${date.getDate()} de ${months[date.getMonth()]} del ${date.getFullYear()}`;
 
   return(
     <IonItemSliding>
