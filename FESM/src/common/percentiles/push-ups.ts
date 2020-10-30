@@ -9,25 +9,25 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
         higher: 29,
         percentiles: [{
           percentile: 90,
-          value: 41
+          value: 36
         }, {
           percentile: 80,
-          value: 34
+          value: 35
         }, {
           percentile: 70,
-          value: 30
+          value: 29
         }, {
           percentile: 60,
-          value: 27
+          value: 28
         }, {
           percentile: 50,
-          value: 24
+          value: 22
         }, {
           percentile: 40,
           value: 21
         }, {
           percentile: 30,
-          value: 18
+          value: 17
         }, {
           percentile: 20,
           value: 16
@@ -40,25 +40,25 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
         higher: 39,
         percentiles: [{
           percentile: 90,
-          value: 32
+          value: 30
         }, {
           percentile: 80,
-          value: 27
+          value: 29
         }, {
           percentile: 70,
-          value: 24
+          value: 22
         }, {
           percentile: 60,
           value: 21
         }, {
           percentile: 50,
-          value: 19
+          value: 17
         }, {
           percentile: 40,
           value: 16
         }, {
           percentile: 30,
-          value: 14
+          value: 12
         }, {
           percentile: 20,
           value: 11
@@ -74,10 +74,10 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
           value: 25
         }, {
           percentile: 80,
-          value: 21
+          value: 24
         }, {
           percentile: 70,
-          value: 19
+          value: 17
         }, {
           percentile: 60,
           value: 16
@@ -92,7 +92,7 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
           value: 10
         }, {
           percentile: 20,
-          value: 8
+          value: 9
         }, {
           percentile: 10,
           value: 5
@@ -102,16 +102,16 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
         higher: 59,
         percentiles: [{
           percentile: 90,
-          value: 24
+          value: 21
         }, {
           percentile: 80,
-          value: 17
+          value: 20
         }, {
           percentile: 70,
-          value: 14
+          value: 13
         }, {
           percentile: 60,
-          value: 11
+          value: 12
         }, {
           percentile: 50,
           value: 10
@@ -123,7 +123,7 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
           value: 7
         }, {
           percentile: 20,
-          value: 5
+          value: 6
         }, {
           percentile: 10,
           value: 4
@@ -133,10 +133,10 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
         higher: 200,
         percentiles: [{
           percentile: 90,
-          value: 24
+          value: 18
         }, {
           percentile: 80,
-          value: 16
+          value: 17
         }, {
           percentile: 70,
           value: 11
@@ -145,13 +145,13 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
           value: 10
         }, {
           percentile: 50,
-          value: 9
+          value: 8
         }, {
           percentile: 40,
           value: 7
         }, {
           percentile: 30,
-          value: 6
+          value: 5
         }, {
           percentile: 20,
           value: 4
@@ -170,25 +170,25 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
         higher: 29,
         percentiles: [{
           percentile: 90,
-          value: 32
+          value: 30
         }, {
           percentile: 80,
-          value: 26
+          value: 29
         }, {
           percentile: 70,
-          value: 22
+          value: 21
         }, {
           percentile: 60,
           value: 20
         }, {
           percentile: 50,
-          value: 16
+          value: 15
         }, {
           percentile: 40,
           value: 14
         }, {
           percentile: 30,
-          value: 11
+          value: 10
         }, {
           percentile: 20,
           value: 9
@@ -201,25 +201,25 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
         higher: 39,
         percentiles: [{
           percentile: 90,
-          value: 31
+          value: 27
         }, {
           percentile: 80,
-          value: 24
+          value: 26
         }, {
           percentile: 70,
-          value: 21
+          value: 20
         }, {
           percentile: 60,
-          value: 17
+          value: 19
         }, {
           percentile: 50,
-          value: 14
+          value: 13
         }, {
           percentile: 40,
           value: 12
         }, {
           percentile: 30,
-          value: 10
+          value: 8
         }, {
           percentile: 20,
           value: 7
@@ -233,25 +233,25 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
         higher: 49,
         percentiles: [{
           percentile: 90,
-          value: 28
+          value: 24
         }, {
           percentile: 80,
-          value: 22
+          value: 23
         }, {
           percentile: 70,
-          value: 18
+          value: 15
         }, {
           percentile: 60,
           value: 14
         }, {
           percentile: 50,
-          value: 12
+          value: 11
         }, {
           percentile: 40,
           value: 10
         }, {
           percentile: 30,
-          value: 7
+          value: 5
         }, {
           percentile: 20,
           value: 4
@@ -264,50 +264,50 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
         higher: 59,
         percentiles: [{
           percentile: 90,
-          value: 23
+          value: 21
         }, {
           percentile: 80,
-          value: 17
+          value: 20
         }, {
           percentile: 70,
-          value: 13
+          value: 11
         }, {
           percentile: 60,
           value: 10
         }, {
           percentile: 50,
-          value: 9
-        }, {
-          percentile: 40,
           value: 7
         }, {
-          percentile: 30,
+          percentile: 40,
           value: 6
         }, {
+          percentile: 30,
+          value: 2
+        }, {
           percentile: 20,
-          value: 4
+          value: 1
         }, {
           percentile: 10,
-          value: 2
+          value: 0
         }]
       }, {
         lower: 60,
         higher: 200,
         percentiles: [{
           percentile: 90,
-          value: 25
+          value: 17
         }, {
           percentile: 80,
-          value: 15
+          value: 16
         }, {
           percentile: 70,
           value: 12
         }, {
           percentile: 60,
-          value: 10
+          value: 11
         }, {
           percentile: 50,
-          value: 6
+          value: 5
         }, {
           percentile: 40,
           value: 4
@@ -316,7 +316,7 @@ export const PushUpsPercentilesValues: MeasurePercentiles[]  =[
           value: 2
         }, {
           percentile: 20,
-          value: 0
+          value: 1
         }, {
           percentile: 10,
           value: 0

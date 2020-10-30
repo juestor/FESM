@@ -8,156 +8,403 @@ export const GreasyPercentilesValues: MeasurePercentiles[]  =[
         lower: 20,
         higher: 29,
         percentiles: [{
+          percentile: 99,
+          value: 4.2
+        }, {
+          percentile: 95,
+          value: 6.4
+        }, {
           percentile: 90,
-          value: 7.1
+          value: 7.9
+        }, {
+          percentile: 85,
+          value: 9.1
         }, {
           percentile: 80,
-          value: 9.4
+          value: 10.5
+        }, {
+          percentile: 75,
+          value: 11.5
         }, {
           percentile: 70,
-          value: 11.8
+          value: 12.6
+        }, {
+          percentile: 65,
+          value: 13.8
         }, {
           percentile: 60,
-          value: 14.1
+          value: 14.8
+        }, {
+          percentile: 55,
+          value: 15.8
         }, {
           percentile: 50,
-          value: 15.9
+          value: 16.6
+        }, {
+          percentile: 45,
+          value: 17.5
         }, {
           percentile: 40,
-          value: 17.4
+          value: 18.6
+        }, {
+          percentile: 35,
+          value: 19.7
         }, {
           percentile: 30,
-          value: 19.5
+          value: 20.7
+        }, {
+          percentile: 25,
+          value: 22
         }, {
           percentile: 20,
-          value: 22.4
+          value: 23.5
+        }, {
+          percentile: 15,
+          value: 24.9
         }, {
           percentile: 10,
-          value: 25.9
+          value: 26.6
+        }, {
+          percentile: 5,
+          value: 29.2
+        }, {
+          percentile: 1,
+          value: 33.4
         }]
       }, {
         lower: 30,
         higher: 39,
         percentiles: [{
+          percentile: 99,
+          value: 7.3
+        }, {
+          percentile: 95,
+          value: 10.3
+        }, {
           percentile: 90,
-          value: 11.3
+          value: 12.4
+        }, {
+          percentile: 85,
+          value: 13.7
         }, {
           percentile: 80,
-          value: 13.9
+          value: 14.9
         }, {
-          percentile: 70,
+          percentile: 75,
           value: 15.9
         }, {
+          percentile: 70,
+          value: 16.8
+        }, {
+          percentile: 65,
+          value: 17.7
+        }, {
           percentile: 60,
-          value: 17.5
+          value: 18.4
+        }, {
+          percentile: 55,
+          value: 19.2
         }, {
           percentile: 50,
-          value: 19
+          value: 20
+        }, {
+          percentile: 45,
+          value: 20.7
         }, {
           percentile: 40,
-          value: 20.5
+          value: 21.6
+        }, {
+          percentile: 35,
+          value: 22.4
         }, {
           percentile: 30,
-          value: 22.3
+          value: 23.2
+        }, {
+          percentile: 25,
+          value: 24.1
         }, {
           percentile: 20,
-          value: 24.2
+          value: 25.1
+        }, {
+          percentile: 15,
+          value: 26.4
         }, {
           percentile: 10,
-          value: 27.3
+          value: 27.8
+        }, {
+          percentile: 5,
+          value: 30.2
+        }, {
+          percentile: 1,
+          value: 34.4
         }]
       }, {
         lower: 40,
         higher: 49,
         percentiles: [{
+          percentile: 99,
+          value: 9.5
+        }, {
+          percentile: 95,
+          value: 12.9
+        }, {
           percentile: 90,
-          value: 13.6
+          value: 15
+        }, {
+          percentile: 85,
+          value: 16.4
         }, {
           percentile: 80,
-          value: 16.3
+          value: 17.5
+        }, {
+          percentile: 75,
+          value: 18.5
         }, {
           percentile: 70,
-          value: 18.1
+          value: 19.3
+        }, {
+          percentile: 65,
+          value: 20.1
         }, {
           percentile: 60,
-          value: 19.6
+          value: 20.8
+        }, {
+          percentile: 55,
+          value: 21.4
         }, {
           percentile: 50,
-          value: 21.1
+          value: 22.1
+        }, {
+          percentile: 45,
+          value: 22.8
         }, {
           percentile: 40,
-          value: 22.5
+          value: 23.5
+        }, {
+          percentile: 35,
+          value: 24.2
         }, {
           percentile: 30,
-          value: 24.1
+          value: 24.9
+        }, {
+          percentile: 25,
+          value: 25.7
         }, {
           percentile: 20,
-          value: 26.1
+          value: 26.6
+        }, {
+          percentile: 15,
+          value: 27.8
         }, {
           percentile: 10,
-          value: 28.9
+          value: 29.2
+        }, {
+          percentile: 5,
+          value: 31.3
+        }, {
+          percentile: 1,
+          value: 35.2
         }]
       }, {
         lower: 50,
         higher: 59,
         percentiles: [{
+          percentile: 99,
+          value: 11
+        }, {
+          percentile: 95,
+          value: 14.8
+        }, {
           percentile: 90,
-          value: 15.3
+          value: 17
+        }, {
+          percentile: 85,
+          value: 18.3
         }, {
           percentile: 80,
-          value: 17.9
+          value: 19.4
+        }, {
+          percentile: 75,
+          value: 20.2
         }, {
           percentile: 70,
-          value: 19.8
+          value: 21
+        }, {
+          percentile: 65,
+          value: 21.7
         }, {
           percentile: 60,
-          value: 21.3
+          value: 22.3
+        }, {
+          percentile: 55,
+          value: 23
         }, {
           percentile: 50,
-          value: 22.7
+          value: 23.6
+        }, {
+          percentile: 45,
+          value: 24.2
         }, {
           percentile: 40,
-          value: 24.1
+          value: 24.9
+        }, {
+          percentile: 35,
+          value: 25.6
         }, {
           percentile: 30,
-          value: 25.7
+          value: 26.3
+        }, {
+          percentile: 25,
+          value: 27.1
         }, {
           percentile: 20,
-          value: 27.5
+          value: 28.1
+        }, {
+          percentile: 15,
+          value: 29.2
         }, {
           percentile: 10,
-          value: 30.3
+          value: 30.6
+        }, {
+          percentile: 5,
+          value: 32.7
+        }, {
+          percentile: 1,
+          value: 36.2
         }]
       }, {
         lower: 60,
-        higher: 200,
+        higher: 69,
         percentiles: [{
+          percentile: 99,
+          value: 11.9
+        }, {
+          percentile: 95,
+          value: 16.2
+        }, {
           percentile: 90,
-          value: 15.3
+          value: 18.1
+        }, {
+          percentile: 85,
+          value: 19.2
         }, {
           percentile: 80,
-          value: 18.4
+          value: 20.2
+        }, {
+          percentile: 75,
+          value: 21
         }, {
           percentile: 70,
-          value: 20.3
+          value: 21.7
+        }, {
+          percentile: 65,
+          value: 22.4
         }, {
           percentile: 60,
-          value: 22
+          value: 23
+        }, {
+          percentile: 55,
+          value: 23.6
         }, {
           percentile: 50,
-          value: 23.5
+          value: 24.2
+        }, {
+          percentile: 45,
+          value: 24.9
         }, {
           percentile: 40,
-          value: 25
+          value: 25.6
+        }, {
+          percentile: 35,
+          value: 26.4
         }, {
           percentile: 30,
-          value: 26.7
+          value: 27
+        }, {
+          percentile: 25,
+          value: 27.9
         }, {
           percentile: 20,
-          value: 28.5
+          value: 28.8
+        }, {
+          percentile: 15,
+          value: 29.8
         }, {
           percentile: 10,
           value: 31.2
+        }, {
+          percentile: 5,
+          value: 33.3
+        }, {
+          percentile: 1,
+          value: 36.8
+        }]
+      }, {
+        lower: 70,
+        higher: 200,
+        percentiles: [{
+          percentile: 99,
+          value: 13.6
+        }, {
+          percentile: 95,
+          value: 15.5
+        }, {
+          percentile: 90,
+          value: 17.5
+        }, {
+          percentile: 85,
+          value: 19
+        }, {
+          percentile: 80,
+          value: 20.1
+        }, {
+          percentile: 75,
+          value: 21
+        }, {
+          percentile: 70,
+          value: 21.6
+        }, {
+          percentile: 65,
+          value: 22.3
+        }, {
+          percentile: 60,
+          value: 22.9
+        }, {
+          percentile: 55,
+          value: 23.7
+        }, {
+          percentile: 50,
+          value: 24.1
+        }, {
+          percentile: 45,
+          value: 24.7
+        }, {
+          percentile: 40,
+          value: 25.3
+        }, {
+          percentile: 35,
+          value: 25.8
+        }, {
+          percentile: 30,
+          value: 26.5
+        }, {
+          percentile: 25,
+          value: 27.1
+        }, {
+          percentile: 20,
+          value: 28.4
+        }, {
+          percentile: 15,
+          value: 29.4
+        }, {
+          percentile: 10,
+          value: 30.7
+        }, {
+          percentile: 5,
+          value: 32.9
+        }, {
+          percentile: 1,
+          value: 47.2
         }]
       }
     ]
@@ -169,157 +416,403 @@ export const GreasyPercentilesValues: MeasurePercentiles[]  =[
         lower: 20,
         higher: 29,
         percentiles: [{
+          percentile: 99,
+          value: 11.4
+        }, {
+          percentile: 95,
+          value: 14
+        }, {
           percentile: 90,
-          value: 14.5
+          value: 15.1
+        }, {
+          percentile: 85,
+          value: 16.1
         }, {
           percentile: 80,
-          value: 17.1
+          value: 16.8
+        }, {
+          percentile: 75,
+          value: 17.6
         }, {
           percentile: 70,
+          value: 18.4
+        }, {
+          percentile: 65,
           value: 19
         }, {
           percentile: 60,
+          value: 19.8
+        }, {
+          percentile: 55,
           value: 20.6
         }, {
           percentile: 50,
-          value: 22.1
+          value: 21.5
+        }, {
+          percentile: 45,
+          value: 22.2
         }, {
           percentile: 40,
-          value: 23.7
+          value: 24.4
+        }, {
+          percentile: 35,
+          value: 24.2
         }, {
           percentile: 30,
-          value: 25.4
+          value: 25.5
+        }, {
+          percentile: 25,
+          value: 26.7
         }, {
           percentile: 20,
-          value: 27.7
+          value: 28.2
+        }, {
+          percentile: 15,
+          value: 30.5
         }, {
           percentile: 10,
-          value: 32.1
+          value: 33.5
+        }, {
+          percentile: 5,
+          value: 36.6
+        }, {
+          percentile: 1,
+          value: 38.6
         }]
       }, {
         lower: 30,
         higher: 39,
         percentiles: [{
+          percentile: 99,
+          value: 11.2
+        }, {
+          percentile: 95,
+          value: 13.9
+        }, {
           percentile: 90,
           value: 15.5
         }, {
+          percentile: 85,
+          value: 16.5
+        }, {
           percentile: 80,
-          value: 18
+          value: 17.5
+        }, {
+          percentile: 75,
+          value: 18.3
         }, {
           percentile: 70,
-          value: 20
+          value: 19.2
+        }, {
+          percentile: 65,
+          value: 20.1
         }, {
           percentile: 60,
-          value: 21.6
+          value: 21
+        }, {
+          percentile: 55,
+          value: 22
         }, {
           percentile: 50,
-          value: 23.1
+          value: 22.8
+        }, {
+          percentile: 45,
+          value: 23.7
         }, {
           percentile: 40,
-          value: 24.9
+          value: 24.8
+        }, {
+          percentile: 35,
+          value: 25.8
         }, {
           percentile: 30,
-          value: 27
+          value: 26.9
+        }, {
+          percentile: 25,
+          value: 28.1
         }, {
           percentile: 20,
-          value: 28.3
+          value: 29.6
+        }, {
+          percentile: 15,
+          value: 31.5
         }, {
           percentile: 10,
-          value: 32.8
-        }
-      ]
+          value: 33.6
+        }, {
+          percentile: 5,
+          value: 36.2
+        }, {
+          percentile: 1,
+          value: 39
+        }]
       }, {
         lower: 40,
         higher: 49,
         percentiles: [{
+          percentile: 99,
+          value: 12.1
+        }, {
+          percentile: 95,
+          value: 15.2
+        }, {
           percentile: 90,
-          value: 18.5
+          value: 16.8
+        }, {
+          percentile: 85,
+          value: 18.3
         }, {
           percentile: 80,
-          value: 21.3
+          value: 19.5
+        }, {
+          percentile: 75,
+          value: 20.6
         }, {
           percentile: 70,
-          value: 23.5
+          value: 21.7
+        }, {
+          percentile: 65,
+          value: 22.7
         }, {
           percentile: 60,
-          value: 24.9
+          value: 23.7
+        }, {
+          percentile: 55,
+          value: 24.6
         }, {
           percentile: 50,
+          value: 25.5
+        }, {
+          percentile: 45,
           value: 26.4
         }, {
           percentile: 40,
-          value: 28.1
+          value: 27.5
+        }, {
+          percentile: 35,
+          value: 28.4
         }, {
           percentile: 30,
-          value: 30.1
+          value: 29.5
+        }, {
+          percentile: 25,
+          value: 30.7
         }, {
           percentile: 20,
-          value: 32.1
+          value: 31.9
+        }, {
+          percentile: 15,
+          value: 33.4
         }, {
           percentile: 10,
-          value: 35
+          value: 35.1
+        }, {
+          percentile: 5,
+          value: 37.1
+        }, {
+          percentile: 1,
+          value: 39.1
         }]
       }, {
         lower: 50,
         higher: 59,
         percentiles: [{
+          percentile: 99,
+          value: 13.9
+        }, {
+          percentile: 95,
+          value: 16.9
+        }, {
           percentile: 90,
-          value: 21.6
+          value: 19.1
+        }, {
+          percentile: 85,
+          value: 20.8
         }, {
           percentile: 80,
-          value: 25
+          value: 22.3
+        }, {
+          percentile: 75,
+          value: 23.6
         }, {
           percentile: 70,
-          value: 26.6
+          value: 24.8
+        }, {
+          percentile: 65,
+          value: 25.8
         }, {
           percentile: 60,
-          value: 28.5
+          value: 26.7
+        }, {
+          percentile: 55,
+          value: 27.6
         }, {
           percentile: 50,
-          value: 30.1
+          value: 28.4
+        }, {
+          percentile: 45,
+          value: 29.3
         }, {
           percentile: 40,
-          value: 31.6
+          value: 30.1
+        }, {
+          percentile: 35,
+          value: 30.8
         }, {
           percentile: 30,
-          value: 33.5
+          value: 31.8
+        }, {
+          percentile: 25,
+          value: 32.9
         }, {
           percentile: 20,
-          value: 35.6
+          value: 33.9
+        }, {
+          percentile: 15,
+          value: 35
         }, {
           percentile: 10,
-          value: 31.9
+          value: 36.1
+        }, {
+          percentile: 5,
+          value: 37.6
+        }, {
+          percentile: 1,
+          value: 39.8
         }]
       }, {
         lower: 60,
-        higher: 200,
+        higher: 69,
         percentiles: [{
+          percentile: 99,
+          value: 13.9
+        }, {
+          percentile: 95,
+          value: 17.7
+        }, {
           percentile: 90,
-          value: 21.1
+          value: 20.2
+        }, {
+          percentile: 85,
+          value: 22
         }, {
           percentile: 80,
-          value: 25.1
+          value: 23.3
+        }, {
+          percentile: 75,
+          value: 24.6
         }, {
           percentile: 70,
-          value: 27.5
+          value: 25.7
+        }, {
+          percentile: 65,
+          value: 26.7
         }, {
           percentile: 60,
-          value: 29.3
+          value: 27.5
+        }, {
+          percentile: 55,
+          value: 28.3
         }, {
           percentile: 50,
-          value: 30.9
+          value: 29.2
+        }, {
+          percentile: 45,
+          value: 30.1
         }, {
           percentile: 40,
-          value: 32.5
+          value: 30.8
+        }, {
+          percentile: 35,
+          value: 31.5
         }, {
           percentile: 30,
-          value: 34.3
+          value: 32.6
+        }, {
+          percentile: 25,
+          value: 33.3
         }, {
           percentile: 20,
-          value: 36.6
+          value: 34.4
+        }, {
+          percentile: 15,
+          value: 35.6
         }, {
           percentile: 10,
-          value: 39.3
+          value: 36.6
+        }, {
+          percentile: 5,
+          value: 38.2
+        }, {
+          percentile: 1,
+          value: 40.3
+        }]
+      }, {
+        lower: 70,
+        higher: 200,
+        percentiles: [{
+          percentile: 99,
+          value: 11.7
+        }, {
+          percentile: 95,
+          value: 16.4
+        }, {
+          percentile: 90,
+          value: 18.3
+        }, {
+          percentile: 85,
+          value: 21.2
+        }, {
+          percentile: 80,
+          value: 22.5
+        }, {
+          percentile: 75,
+          value: 23.7
+        }, {
+          percentile: 70,
+          value: 24.8
+        }, {
+          percentile: 65,
+          value: 25.7
+        }, {
+          percentile: 60,
+          value: 26.6
+        }, {
+          percentile: 55,
+          value: 27.6
+        }, {
+          percentile: 50,
+          value: 28.2
+        }, {
+          percentile: 45,
+          value: 28.9
+        }, {
+          percentile: 40,
+          value: 30.5
+        }, {
+          percentile: 35,
+          value: 31
+        }, {
+          percentile: 30,
+          value: 31.9
+        }, {
+          percentile: 25,
+          value: 32.9
+        }, {
+          percentile: 20,
+          value: 34
+        }, {
+          percentile: 15,
+          value: 35.3
+        }, {
+          percentile: 10,
+          value: 36.4
+        }, {
+          percentile: 5,
+          value: 38.1
+        }, {
+          percentile: 1,
+          value: 40.2
         }]
       }
     ]

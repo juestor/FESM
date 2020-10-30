@@ -98,6 +98,7 @@ export default function ResultsParticipant(){
                 evaluationList.push(evaluation);
               }
             });
+            console.log('evaluationList', evaluationList)
             if (evaluationList) {
               setEvaluations(evaluationList);              
               setEvaluationLabels([
@@ -106,7 +107,7 @@ export default function ResultsParticipant(){
                 'Fuerza MI',
                 'Abdominales',
                 'Flexiones',
-                'Flexibilidad',
+                'Movilidad',
                 '% grasa'
               ]);
             }
@@ -175,14 +176,14 @@ export default function ResultsParticipant(){
         </IonHeader>
         <IonContent>
           <IonLabel className="title">
-            Resultados
+            Perfil del Fitness
           </IonLabel>
           <IonLabel className="subtitle" color="primary">
             {participantName}
           </IonLabel>
           <IonGrid>
             <IonRow>
-              <IonCol className="firstColumnClass">Serie</IonCol>
+              <IonCol className="firstColumnClass">Cualidad</IonCol>
               <IonCol className="columnClass">
                 <IonIcon className="iconClass" icon={heartSharp}></IonIcon>
               </IonCol>

@@ -9,155 +9,155 @@ export const SitNReachPercentilesValues: MeasurePercentiles[]  =[
         higher: 29,
         percentiles: [{
           percentile: 90,
-          value: 16
+          value: 40
         }, {
           percentile: 80,
-          value: 12
+          value: 39
         }, {
           percentile: 70,
-          value: 10
+          value: 34
         }, {
           percentile: 60,
-          value: 7
+          value: 33
         }, {
           percentile: 50,
-          value: 5
+          value: 30
         }, {
           percentile: 40,
-          value: 3
+          value: 29
         }, {
           percentile: 30,
-          value: 0
+          value: 25
         }, {
           percentile: 20,
-          value: -3
+          value: 24
         }, {
           percentile: 10,
-          value: -8
+          value: 18
         }]
       }, {
         lower: 30,
         higher: 39,
         percentiles: [{
           percentile: 90,
-          value: 14
+          value: 38
         }, {
           percentile: 80,
-          value: 11
+          value: 37
         }, {
           percentile: 70,
-          value: 8
+          value: 33
         }, {
           percentile: 60,
-          value: 6
+          value: 32
         }, {
           percentile: 50,
-          value: 3
+          value: 28
         }, {
           percentile: 40,
-          value: 1
+          value: 27
         }, {
           percentile: 30,
-          value: -2
+          value: 23
         }, {
           percentile: 20,
-          value: -5
+          value: 22
         }, {
           percentile: 10,
-          value: -9
+          value: 17
         }]
       }, {
         lower: 40,
         higher: 49,
         percentiles: [{
           percentile: 90,
-          value: 11
+          value: 35
         }, {
           percentile: 80,
-          value: 8
+          value: 34
         }, {
           percentile: 70,
-          value: 4
+          value: 29
         }, {
           percentile: 60,
-          value: 2
+          value: 28
         }, {
           percentile: 50,
-          value: -1
+          value: 24
         }, {
           percentile: 40,
-          value: -3
+          value: 23
         }, {
           percentile: 30,
-          value: -6
+          value: 18
         }, {
           percentile: 20,
-          value: -10
+          value: 17
         }, {
           percentile: 10,
-          value: -14
+          value: 12
         }]
       }, {
         lower: 50,
         higher: 59,
         percentiles: [{
           percentile: 90,
-          value: 12
+          value: 35
         }, {
           percentile: 80,
-          value: 6
+          value: 34
         }, {
           percentile: 70,
-          value: 3
+          value: 28
         }, {
           percentile: 60,
-          value: 1
+          value: 27
         }, {
           percentile: 50,
-          value: -1
+          value: 24
         }, {
           percentile: 40,
-          value: -4
+          value: 23
         }, {
           percentile: 30,
-          value: -8
+          value: 16
         }, {
           percentile: 20,
-          value: -11
+          value: 15
         }, {
           percentile: 10,
-          value: -14
+          value: 12
         }]
       }, {
         lower: 60,
         higher: 200,
         percentiles: [{
           percentile: 90,
-          value: 9
+          value: 33
         }, {
           percentile: 80,
-          value: 4
+          value: 32
         }, {
           percentile: 70,
-          value: 0
+          value: 25
         }, {
           percentile: 60,
-          value: -2
+          value: 24
         }, {
           percentile: 50,
-          value: -4
+          value: 20
         }, {
           percentile: 40,
-          value: -8
+          value: 19
         }, {
           percentile: 30,
-          value: -10
+          value: 15
         }, {
           percentile: 20,
-          value: -12
+          value: 14
         }, {
           percentile: 10,
-          value: -15
+          value: 11
         }]
       }
     ]
@@ -170,62 +170,62 @@ export const SitNReachPercentilesValues: MeasurePercentiles[]  =[
         higher: 29,
         percentiles: [{
           percentile: 90,
-          value: 17
+          value: 43
         }, {
           percentile: 80,
-          value: 14
+          value: 40
         }, {
           percentile: 70,
-          value: 12
+          value: 37
         }, {
           percentile: 60,
-          value: 10
+          value: 36
         }, {
           percentile: 50,
-          value: 8
+          value: 33
         }, {
           percentile: 40,
-          value: 6
+          value: 32
         }, {
           percentile: 30,
-          value: 3
+          value: 28
         }, {
           percentile: 20,
-          value: 0
+          value: 27
         }, {
           percentile: 10,
-          value: -4
+          value: 22
         }]
       }, {
         lower: 30,
         higher: 39,
         percentiles: [{
           percentile: 90,
-          value: 16
+          value: 41
         }, {
           percentile: 80,
-          value: 13
+          value: 40
         }, {
           percentile: 70,
-          value: 11
+          value: 36
         }, {
           percentile: 60,
-          value: 9
+          value: 35
         }, {
           percentile: 50,
-          value: 7
+          value: 32
         }, {
           percentile: 40,
-          value: 5
+          value: 31
         }, {
           percentile: 30,
-          value: 2
+          value: 27
         }, {
           percentile: 20,
-          value: -1
+          value: 26
         }, {
           percentile: 10,
-          value: -5
+          value: 21
         }
       ]
       }, {
@@ -233,93 +233,93 @@ export const SitNReachPercentilesValues: MeasurePercentiles[]  =[
         higher: 49,
         percentiles: [{
           percentile: 90,
-          value: 14
+          value: 40
         }, {
           percentile: 80,
-          value: 11
+          value: 37
         }, {
           percentile: 70,
-          value: 9
+          value: 34
         }, {
           percentile: 60,
-          value: 7
+          value: 33
         }, {
           percentile: 50,
-          value: 5
+          value: 30
         }, {
           percentile: 40,
-          value: 3
+          value: 29
         }, {
           percentile: 30,
-          value: 0
+          value: 25
         }, {
           percentile: 20,
-          value: -2
+          value: 24
         }, {
           percentile: 10,
-          value: -7
+          value: 19
         }]
       }, {
         lower: 50,
         higher: 59,
         percentiles: [{
           percentile: 90,
-          value: 14
+          value: 39
         }, {
           percentile: 80,
-          value: 11
+          value: 38
         }, {
           percentile: 70,
-          value: 9
+          value: 33
         }, {
           percentile: 60,
-          value: 6
+          value: 32
         }, {
           percentile: 50,
-          value: 4
+          value: 30
         }, {
           percentile: 40,
-          value: 3
+          value: 29
         }, {
           percentile: 30,
-          value: 0
+          value: 25
         }, {
           percentile: 20,
-          value: -3
+          value: 24
         }, {
           percentile: 10,
-          value: -7
+          value: 19
         }]
       }, {
         lower: 60,
         higher: 200,
         percentiles: [{
           percentile: 90,
-          value: 11
+          value: 35
         }, {
           percentile: 80,
-          value: 8
+          value: 34
         }, {
           percentile: 70,
-          value: 5
+          value: 31
         }, {
           percentile: 60,
-          value: 4
+          value: 30
         }, {
           percentile: 50,
-          value: 2
+          value: 27
         }, {
           percentile: 40,
-          value: 0
+          value: 26
         }, {
           percentile: 30,
-          value: -2
+          value: 23
         }, {
           percentile: 20,
-          value: -3
+          value: 22
         }, {
           percentile: 10,
-          value: -8
+          value: 18
         }]
       }
     ]

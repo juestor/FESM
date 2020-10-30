@@ -272,7 +272,7 @@ export default function TestMenu(){
             <IonCard className="card" onClick={() => setShowFlexibilityModal(true)}>
               <IonIcon className="testIconClass" icon={body}></IonIcon>
               <IonCardHeader className="card-title-container">
-                <IonCardTitle className="card-title" color="secondary">Flexibilidad</IonCardTitle>
+                <IonCardTitle className="card-title" color="secondary">Movilidad</IonCardTitle>
               </IonCardHeader>
               <div className="results-container">
                 {flexibility && <div className="result">
@@ -286,7 +286,7 @@ export default function TestMenu(){
             <IonCard className="card" onClick={() => setShowNutritionalModal(true)}>
               <IonIcon className="testIconClass" icon={fastFoodSharp}></IonIcon>
               <IonCardHeader className="card-title-container">
-                <IonCardTitle className="card-title" color="secondary">Estado Nutricional</IonCardTitle>
+                <IonCardTitle className="card-title" color="secondary">Composición Corporal</IonCardTitle>
               </IonCardHeader>
               <div className="results-container">
                 {nutritional && <div className="result">
@@ -301,7 +301,7 @@ export default function TestMenu(){
           <IonModal isOpen={showCardioModal}>
             <div className="modalContainer">
               <IonLabel className="modal-title" color="primary">
-                FITNESS CARDIOVASCULAR
+                RESISTENCIA CARDIO-RESPIRATORIA
               </IonLabel>
               <div className="tabs">  
                 <IonIcon class={cardioOption === cardioOptions.calculated ? 'tab-icon active' : 'tab-icon inactive'} icon={calculatorOutline} onClick={() => setCardioOption(cardioOptions.calculated)}/>
@@ -323,10 +323,10 @@ export default function TestMenu(){
                 {cardioOption === cardioOptions.bicycle && 
                   <div className="option">
                     <IonLabel className="option-title" color="secondary">
-                      Cálculo indirecto - Bicicleta
+                      Cálculo indirecto - Cicloergómetro
                     </IonLabel>
                     <IonItem className="option-value">
-                      <IonLabel position="floating">Vatios</IonLabel>
+                      <IonLabel position="floating">Vatios (W)</IonLabel>
                       <IonInput value={cardioVatios} onIonChange={e => setCardioVatios(safeParseFloat(e.detail.value!))}></IonInput>
                     </IonItem>
                   </div>
@@ -334,7 +334,7 @@ export default function TestMenu(){
                 {cardioOption === cardioOptions.walking && 
                   <div className="option">
                     <IonLabel className="option-title" color="secondary">
-                      Cálculo indirecto - Trote
+                      Cálculo indirecto - Banda
                     </IonLabel>
                     <IonItem className="option-value">
                       <IonLabel position="floating">Velocidad (Millas/min)</IonLabel>
@@ -384,7 +384,7 @@ export default function TestMenu(){
           <IonModal isOpen={showStrengthModal}>
             <div className="modalContainer">
               <IonLabel className="modal-title" color="primary">
-                FITNESS FUERZA
+                 FUERZA MUSCULAR
               </IonLabel>
 
               <div className="tabs">  
@@ -395,7 +395,7 @@ export default function TestMenu(){
                 {strengthOption === strengthOptions.upper && 
                   <div className="option">
                     <IonLabel className="option-title" color="secondary">
-                      Tronco Superior
+                      MS (Press Pecho)
                     </IonLabel>
                     <IonItem className="option-value">
                       <IonLabel position="floating">Peso (Kg)</IonLabel>
@@ -406,7 +406,7 @@ export default function TestMenu(){
                 {strengthOption === strengthOptions.lower && 
                   <div  className="option">
                     <IonLabel className="option-title" color="secondary">
-                      Tronco Inferior
+                      MI (Press Pierna)
                     </IonLabel>
                     <IonItem className="option-value">
                       <IonLabel position="floating">Peso (Kg)</IonLabel>
@@ -450,7 +450,7 @@ export default function TestMenu(){
           <IonModal isOpen={showResistanceModal}>
             <div className="modalContainer">
               <IonLabel className="modal-title" color="primary">
-                FITNESS RESISTENCIA
+                RESISTENCIA MUSCULAR
               </IonLabel>
 
               <div className="tabs">  
@@ -507,12 +507,12 @@ export default function TestMenu(){
           <IonModal isOpen={showFlexibilityModal}>
             <div className="modalContainer">
               <IonLabel className="modal-title" color="primary">
-                FITNESS FLEXIBILIDAD
+                MOVILIDAD ARTICULAR
               </IonLabel>
               <div className='option-content'>
                 <div className="option">
                   <IonLabel className="option-title" color="secondary">
-                    Flexibilidad
+                    Sit and Reach
                   </IonLabel>
                   <IonItem className="option-value">
                     <IonLabel position="floating">distancia (cm)</IonLabel>
@@ -539,7 +539,7 @@ export default function TestMenu(){
           <IonModal isOpen={showNutritionalModal}>
           <div className="modalContainer">
             <IonLabel className="modal-title" color="primary">
-              FITNESS NUTRICIONAL
+              COMPOSICION CORPORAL
             </IonLabel>
 
             <div className="tabs">  
@@ -550,7 +550,7 @@ export default function TestMenu(){
               {nutritionalOption === nutritionalOptions.direct && 
                 <div className="option">
                   <IonLabel className="option-title" color="secondary">
-                    Cálculo directo
+                    Cálculo indirecto
                   </IonLabel>
                   <IonItem className="option-value">
                     <IonLabel position="floating">% graso</IonLabel>
@@ -584,7 +584,7 @@ export default function TestMenu(){
                     <IonInput value={supraIliacFold} onIonChange={e => setSupraIliacFold(safeParseFloat(e.detail.value!))}></IonInput>
                   </IonItem>
                   <IonItem className="option-pliegue-value">
-                    <IonLabel position="floating">Abdonimal</IonLabel>
+                    <IonLabel position="floating">Abdominal</IonLabel>
                     <IonInput value={abdominalFold} onIonChange={e => setAbdominalFold(safeParseFloat(e.detail.value!))}></IonInput>
                   </IonItem>
                   <IonItem className="option-pliegue-value">

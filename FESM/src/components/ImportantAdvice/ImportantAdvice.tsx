@@ -37,7 +37,7 @@ const ImportantAdvice: React.FC<ContainerProps> = () => {
               <IonCardTitle class="card-title">Aviso Importante</IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
-            El objetivo de esta apicación es determinar el nivel del fitness en personas sanas, no atletas, mayores de 18 años, debe ser realizada por personal idóneo (médicos del deporte).
+            El objetivo de esta aplicación es determinar el nivel del fitness en personas sanas, no atletas, mayores de 18 años. Exclusiva para médicos del deporte.
             </IonCardContent>
           </IonCard>
         </IonContent>
