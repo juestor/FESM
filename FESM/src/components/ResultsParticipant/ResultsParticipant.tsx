@@ -98,7 +98,7 @@ export default function ResultsParticipant(){
                 evaluationList.push(evaluation);
               }
             });
-            console.log('evaluationList', evaluationList)
+            console.log('evaluationList', evaluationList);
             if (evaluationList) {
               setEvaluations(evaluationList);              
               setEvaluationLabels([
@@ -160,7 +160,7 @@ export default function ResultsParticipant(){
 
   const getStringDate = (date: any): string => {
     let result = new Date(date);
-    return `${months[result.getMonth()]} ${result.getDate()} del ${result.getFullYear()}`
+    return `${months[result.getMonth() ]} ${result.getDate()} del ${result.getFullYear()}`
   }
 
   return (
